@@ -1,0 +1,1769 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <head>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body);"></script>
+        <link rel="stylesheet" href="style.css">
+        
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+        <style>
+            
+                pre[class*="language-"], 
+                code[class*="language-"] {
+                    background: #000000 !important; /* Pure Black */
+                    color: #ffffff !important;      /* Ensure base text is white */
+                }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-hlsl.min.js"></script>
+        
+    </head>
+<body style="background-color: #000000 ">
+<div class="article">
+
+<h1>
+<a>
+		<strong>Matemathics Explanations of Plot Programming</strong>
+	</a>
+</h1>
+
+<h1>
+	<a>
+		<strong>Math Explanation CODE relations</strong>
+	</a>
+</h1>	
+    
+<p class="siteSub">
+
+From Andraelity, how CODE using math. 
+
+</p>
+
+<p class="roleNote">
+
+    In thy following lines we are going to verify or create the connexion that would allow us to unite code with mathematics
+
+</p>
+
+<div class="articleRight">
+    
+    <div  class="articleRightInner">
+
+      <img width="400"  src="Img/ShadersImage.png" class="center">
+      <br>  
+<a target = "_blank" href="https://www.youtube.com/channel/UC-4AaN4M3Sq1lY6NVZnfaEw">Youtube/Andreality</a>
+</div>
+</div>
+<p>
+	<strong>Shaders-Plane</strong>
+
+
+After we had define exactly how the idea of shaders work, and which are the primary concepts that we understand about computer, the process we are going to follow
+would be to start making outputs on graphic structures at the same time that we understand and comprehend the mathematical structures that are going to provide us 
+with the step by step to achieve visual representations and overall systematic representation of information and graphical relationships.
+
+</p>
+
+
+
+        
+
+<div class="contentsPanel">
+    <div class="contentsHeader">Index Webpages Redirect</div>
+    <ul>
+
+<li><span>0.</span><a href="#CircleSDF"> CircleSDF</a></li>
+<li><span>0.</span><a href="https://andreality1.github.io/Mathematics-Code-EulersIdentiy/"> EulersIdentity</a></li>
+<li><span>1.</span><a href="https://andreality1.github.io/Mathematics-Code-Derivatives/"> Derivatives</a></li>
+
+
+</ul>
+</div>
+
+<!-- 
+    
+ _______           _______  ______   _______  _______  _______ 
+(  ____ \|\     /|(  ___  )(  __  \ (  ____ \(  ____ )(  ____ \
+| (    \/| )   ( || (   ) || (  \  )| (    \/| (    )|| (    \/
+| (_____ | (___) || (___) || |   ) || (__    | (____)|| (_____ 
+(_____  )|  ___  ||  ___  || |   | ||  __)   |     __)(_____  )
+      ) || (   ) || (   ) || |   ) || (      | (\ (         ) |
+/\____) || )   ( || )   ( || (__/  )| (____/\| ) \ \__/\____) |
+\_______)|/     \||/     \|(______/ (_______/|/   \__/\_______)
+ _______  _______  _______  _______          _________ _______  _______ 
+(  ____ \(  ____ )(  ___  )(  ____ )|\     /|\__   __/(  ____ \(  ____ \
+| (    \/| (    )|| (   ) || (    )|| )   ( |   ) (   | (    \/| (    \/
+| |      | (____)|| (___) || (____)|| (___) |   | |   | |      | (_____ 
+| | ____ |     __)|  ___  ||  _____)|  ___  |   | |   | |      (_____  )
+| | \_  )| (\ (   | (   ) || (      | (   ) |   | |   | |            ) |
+| (___) || ) \ \__| )   ( || )      | )   ( |___) (___| (____/\/\____) |
+(_______)|/   \__/|/     \||/       |/     \|\_______/(_______/\_______)
+                                                                         
+-->
+
+
+
+<h2 style="font-size: 50px;" id ="CircleSDF"><strong>CircleSDF</strong></h2>
+<!-- <h1><b><a href="https://andraelity.github.io/WebPageVideoTest/" > https://andraelity.github.io/WebPageVideoTest/ </a></b></h1> -->
+<!-- <h1><b><a> Factorial Identification </a></b></h1> -->
+
+
+<!-- 
+_______ _________ _______  _______  _        _______  _______  ______   _______ 
+(  ____ \\__   __/(  ____ )(  ____ \( \      (  ____ \(  ____ \(  __  \ (  ____ \
+| (    \/   ) (   | (    )|| (    \/| (      | (    \/| (    \/| (  \  )| (    \/
+| |         | |   | (____)|| |      | |      | (__    | (_____ | |   ) || (__    
+| |         | |   |     __)| |      | |      |  __)   (_____  )| |   | ||  __)   
+| |         | |   | (\ (   | |      | |      | (            ) || |   ) || (      
+| (____/\___) (___| ) \ \__| (____/\| (____/\| (____/\/\____) || (__/  )| )      
+(_______/\_______/|/   \__/(_______/(_______/(_______/\_______)(______/ |/       
+                                                                                 
+-->
+
+<hr>
+<hr>
+<h1 style="font-size: 40px;"><b> Shaders Circle SDF</b></h1>
+
+
+
+<div style = "font-size: 21px">
+
+
+    <pre><code class="language-hlsl">
+
+        CGPROGRAM
+    
+        #pragma vertex vert alpha
+        #pragma fragment frag alpha
+    
+        #include "UnityCG.cginc"
+    
+        struct VertexInfo
+        {
+            float2 uv : TEXCOORD0;
+            float4 vertex : POSITION;
+        };
+    
+        struct PixelData
+        {
+            float2 uv : TEXCOORD0;
+            float4 vertex : SV_POSITION;
+        };
+    
+        sampler2D _MainTex;
+    
+        float4 _MainTex_ST;
+    
+        int _SetScreen ;
+            float _StepTime; // This receives the value from C#
+    
+            PixelData vert (VertexInfo v)
+        {
+            PixelData o;
+            o.vertex = UnityObjectToClipPos(v.vertex);
+            o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+            return o;
+        }
+    
+        fixed4 frag (PixelData i) : SV_Target
+        {
+            
+            // THIS CODE MEANS
+            // HOW TO RUN THE PIXELS OF THE SCREEN.
+            
+            float2 uv =  i.uv ;
+            
+            fixed4 colorWhite = float4(1,1,1,1); // Color white.
+            fixed4 colorBlack = float4(0,0,0,1); // Color Black.
+            
+            col = fixed4(uv.x, uv.y , 0.0, 1.0);
+            return col;
+        }
+    
+        ENDCG
+    
+</code></pre>
+    
+
+$$\begin{aligned}
+&\text{he computer runs all the graphics interfaces through the chips, which is nothing else but a bunch of} \\
+&\text{organizers or sieves, that reorder the on's and off's from thousands and millions of switches, which only purpose} \\
+&\text{is to direct and redirect or sieve, the electric current, electricity, the power, the force through } \\
+&\text{to the desired path, so the idea here is not understand something so simple, this is basically changing a bulb} \\
+&\text{and turn on the switch to check if it turn up or not, the idea here is visualize what it is the best way} \\
+&\text{to change all the bulbs of an stadium capable to alocate 200.000 kThousands people, and not just change} \\
+&\text{the bulbs but also change the wired system that runs through all of them, all of a sudem changing one bulb  } \\
+&\text{seems like a really easy task.} \\
+\\[5pt]
+&\text{But why thinking this inmense and enormous, is necesary, I only need to plot a single sine function} \\
+&\text{i could do it by hand, if doing such thing is that difficult I would prefer to do that, is maybe} \\
+&\text{what you are thinking now, and yeah, you're in the freedom to do whatever you think is best, but if your} \\
+&\text{idea is to think about something really specific, and really punctual, which requires you to learn} \\
+&\text{about this particular type of things, about this specific and punctual ways to think, then yes, you got} \\
+&\text{to start thinking very inmense, so thinking little is a little bit more simple.} \\
+\\[5pt]
+
+&\text{So now we begin, what are these sieves you'll be thinking, well, easy, sum this two numbers could be a sieve, } \\
+&\text{substract this two numbers, could be another sieve, make this number equal to this other number, is anoother one,} \\
+&\text{multiply, compare, divide, greater and less than, is another way to create ways to separate and filter information} \\
+&\text{verify trueness, which means if the thing is true or false, and when I say thing I mean  1 is equal to 1, if yes then } \\
+&\text{continue with the next things to do.}\\
+\\[5pt]
+
+&\text{so that`s basically computing in its purest form, thats all the computer does all the time, in many many many ways to }\\
+&\text{reorganize summations, comparations, multiplication, evaluation, and also one of the most important ones, }\\
+&\text{create new things, stablish new information, save information, or also save this number, save this information you are reading,}\\
+&\text{maybe it is useful in the future.}\\
+\\[5pt]
+
+&\text{so that's basically doing computing, that's all a computer does, in many, maaanyyyy ways, different ways but }\\
+&\text{at the end the same thing, at the end the same same same thing, so if you now know what's really going on }\\
+&\text{how much of this things you could think of out a doing }\\
+&\text{1 trillions}\\
+&\text{1 quatrillions}\\
+&\text{1 quintilloins}\\
+&\text{1 or maybe you could just think that everything that is going around you, works like that}\\
+&\text{that everything that goes in your reality works like that, that everything is a summation}\\
+&\text{a substraction, a reorganization of data a store and load of information in very particular ways to make everything }\\                    
+&\text{looks different but the same, at the same time, so maybe is life a simulation maybe you are reading letters that }\\
+&\text{only appear in front of you when you are reading them, and everysingle time that you save something is only the illusion}\\
+&\text{that you image yourself really doing something.}\\
+
+&\text{so is a decaheptaoctasextaatrillion of things, doesnt sountd that big.}\\
+\\[5pt]
+
+&\text{so the idea behind computers or more specificly science, is that you could alter the things in reality}\\
+&\text{if the things are organized in a correct order, or fashion, something that you can think is basically a }\\
+&\text{representation of this amounts, this inmense number of operations}\\
+\\[5pt]
+
+&\text{so how much pixels are on a screen like 2 million ? yeah something like that right, 1920 * 1080}\\
+&\text{really small, dont you think, but how many transistors are on a chip, like 10 billion}\\
+&\text{but why 10 billion if I only got 2 million pixels, and that's where everything hides behind}\\
+&\text{how many screens are really running on your chip, on your computer, how many screens }\\
+&\text{are being sum at other things, compare, substracted, how many data on your screen can be presented}\\
+&\text{in other strings, in oder words, in other numbers, how many screens are on your computer, }\\
+&\text{or more clearer, how many screens can you handle, hey wait a minute I only use one screen what the hell }\\
+&\text{are you talking about. Simple, suppose that you are on a cafe internet, the old ones, where people used to sit}\\
+&\text{one next to the other, now if you follow this structure, could you simulate that expression on your screen}\\
+&\text{it is possible to create an simulation on your computer using math and code to create a cafe}\\
+&\text{internet, yes for sure, so if you can simulate computers in a computers, are you simmulating a computer}\\
+&\text{or just making use of your computer more extended.}\\
+\\[5pt]
+
+&\text{thats usually the most difficult idea to get on, that within your computer there are more computers, }\\
+&\text{that you could make use of, if you know how to work with them, so making use of this screens or computers }\\
+&\text{is what you need to understand, how to make use of computer more throughfully, how to use computers}\\
+&\text{to use more computers, like painting, or building houses, learn how to build houses today, so you could }\\
+&\text{build more houses tomorrow, or painting, paint something today so you could make more paints in the future}\\
+&\text{so imagine that within your computer there are hundres or thousands or millions of screens, that you could}\\
+&\text{could use to display things on.}\\
+\\[5pt]
+
+&\text{you could display mathematical plots, like we are going to do from this moment on, or }\\
+&\text{you could write words on it, or you could create pictures, or used to create diagrams}\\
+&\text{to edit videos, to edit images, to simulate environments, to 3D expand multiple screens so}\\
+&\text{you image yourself automatizing machines, design plans, chat or whichever you think is best}\\
+&\text{but yeah you got hundrds of screens on your computer available to extend, achieve, and reach your goals,}\\
+&\text{but overall try to accomplish what you choise.}\\
+
+\end{aligned}$$
+
+</div>
+<br>
+<br>
+
+
+
+<hr>
+<div style = "font-size: 21px">
+        $$\LARGE\text {Shaders}$$
+</div>        
+<hr>
+
+<div style = "font-size: 21px">
+<br>
+
+$$\begin{aligned}
+&\bullet \text{Read from memory:} && [STACK] \to \text{DATA} \\
+&\bullet \text{Write to memory:} && \text{DATA} \to [STACK] \\
+&\bullet \text{Add:} && a + b  \to \text{DATA} + \text{DATA}\\
+&\bullet \text{Subtract:} && a - b \to \text{DATA} - \text{DATA}\\
+&\bullet \text{Branch on Zero/False:} && \text{if } Z = 0 \to \text{DATA} = 0\\
+&\bullet \text{Branch on One/Positive:} && \text{if } Z = 1 \to \text{DATA} = 1
+\end{aligned}$$
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{The previous instructions define what a computer is, and what can you do to make a computer work}\\
+&\text{}\\
+
+&\text{So if we understand now that every computer chip today, got thousands and thousands of computers, inside the }\\
+&\text{the question, start to turns into what can you do to change this computers to do what you want to do}\\
+&\text{now I got for you a question, can you link a computer to a pixel ?, can you place a single computer }\\
+&\text{inside your pixel, can you place a computer inside 2 million pixels, the answer is yes but no,}\\
+&\text{its is possible yes, it is currently working like that no, so what is really happening is that each pixel}\\
+&\text{is link through a space in your computer chip that sends the information to the screen, once is all updated,}\\
+&\text{but before the screen is updated there is a single computer with the rules that we specify above dedicated to}\\
+&\text{each pixel.}\\
+&\text{So why instead not only one computer to all the pixels?, well thats a nice question, and the answers is }\\
+&\text{yes, that's how everything use to work in the past, when computers started, the main way how they used to }\\
+&\text{handle the operation, was like that, but at time past, and everything start to get tighter and tighter then}\\
+&\text{we start to notice; hey, you know what I can do the same thing I am doing with 1 single computer with 2 milloin }\\
+&\text{of them, and even faster.}\\
+&\text{The reason why is faster, is cuz compare things is slower than to make calculations, calculations is fast really}\\
+&\text{fast!!, like super, super, fast. }\\
+&\text{So, now you know got the idea of what we are going to do, we are going to perform calculation on multiple }\\
+&\text{computers, at the same time, to graph, or plot things on the screen, thats the main goal, and the reason how, }\\
+&\text{is cuz doing that thing is extremelly fast.}\\
+&\text{}\\
+\end{aligned}$$
+
+</div>
+
+<img  src="Img/ParallelComputingOrder.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+
+
+<div style = "font-size: 21px">
+
+<!-- &\text{computers, at the same time, to graph, or plot things on the screen, thats the main goal, and the reason how, }\\ -->
+
+$$\begin{aligned}
+&\text{So the idea here is to understand that every single computer is run by another computer, that a way for us to }\\
+&\text{understand more computer was create more computers to make use of, so we got to invent a way to name this new }\\
+&\text{computers so everything dont get messup in the process, so instead of detailing computers version 2,3,4,5....}\\
+&\text{ we instead started to name them like shaders, cores, thread, parallelize, kernel, virtualize, and}\\
+&\text{etc, etc, etc...}\\
+&\text{instead imagine the computers using others computers in a different way, with the purpose to achieve a goal.}\\
+&\text{now what we are going to do is define how we can make use of a version of computers names shaders}\\
+&\text{which is the closets way to make use of the graphic structures.}\\
+&\text{The director is the computer that runs the compiler, which is the programming language of your choice,}\\
+&\text{and that allows you to create the layers between the chip and the GPU interface }\\
+&\text{so this is going to be the first way to connect the two points, the CPU is the place where you are going}\\
+&\text{to use this programming language, to use the layers to share information with your graphics card}\\
+&\text{which is the one who would take care of the displaying of your plots, offcourse there is a way to make}\\
+&\text{this in the CPU, but is more manageable to do that in the GPU.}\\
+&\text{So the GPU is the one which can operate this idea of millions of computers in a more clearer way.}\\
+&\text{the main language of your choice is going to be the one who is going to direct which computers}\\
+&\text{at which times, and in which way they are going to behave.}\\
+&\text{imagine as if you were running your program by launching a command run, but instead you are running programs}\\
+&\text{inside a programming language, which create the communication between the next layer of abstraction}\\
+&\\[5ex]
+
+
+&\text{Launching the computers is the key cuz thats whats going to allow you to ordenate things a little bit }\\
+&\text{more clearer, mathematics is the key, make use of mathematics is the main idea here, learn how to }\\
+&\text{make use of the ways to graphics functions things is what we need to do.}\\
+&\text{now what we are going to do is make use of shaders by setting this thing up only to run shaders}\\
+&\text{just one shaders, and we are going to get exhaust to make use of this thing}\\
+&\text{there's million of things that we could write on a shader.}\\
+&\text{So we are going to project many things in shaders, so we could make really nice graph in the future.}\\
+&\\[5ex]
+
+&\text{What we now know about shaders is that they work as computers, but you also know that within a shader there are}\\
+&\text{also hundreds of computers, them which run in parallel, which only mean that current-electricity runs through it}\\
+&\text{making all the computers inside the shader to run at the same time, all the single computers running at the same}\\
+&\text{time, every single computer executed at the same time, and we can make these high number of computers to work }\\
+&\text{how we wanted, and how we can do that is the key point here, we got to understand them before hand; we got to}\\
+&\text{learn how to make use of them so we can make use of them.}\\
+&\text{The question here is how we can make thousands of mini computers inside the shader to work how we want,}\\
+&\text{which means output what we want them to output.}\\
+&\text{}\\
+\end{aligned}$$
+        
+
+</div>
+
+
+<!-- 
+_______           _______  ______   _______  _______  _______ _________          _______  _______  _______          
+(  ____ \|\     /|(  ___  )(  __  \ (  ____ \(  ____ )(  ____ \\__   __/|\     /|(  ____ \(  ___  )(  ____ )|\     /|
+| (    \/| )   ( || (   ) || (  \  )| (    \/| (    )|| (    \/   ) (   | )   ( || (    \/| (   ) || (    )|( \   / )
+| (_____ | (___) || (___) || |   ) || (__    | (____)|| (_____    | |   | (___) || (__    | |   | || (____)| \ (_) / 
+(_____  )|  ___  ||  ___  || |   | ||  __)   |     __)(_____  )   | |   |  ___  ||  __)   | |   | ||     __)  \   /  
+      ) || (   ) || (   ) || |   ) || (      | (\ (         ) |   | |   | (   ) || (      | |   | || (\ (      ) (   
+/\____) || )   ( || )   ( || (__/  )| (____/\| ) \ \__/\____) |   | |   | )   ( || (____/\| (___) || ) \ \__   | |   
+\_______)|/     \||/     \|(______/ (_______/|/   \__/\_______)   )_(   |/     \|(_______/(_______)|/   \__/   \_/                                                                                                                        
+-->
+
+
+
+<hr>
+<h1>Shader Snippet</h1>
+<hr>
+
+<pre><code class="language-hlsl">
+
+    CGPROGRAM
+
+    #pragma vertex vert alpha
+    #pragma fragment frag alpha
+
+    #include "UnityCG.cginc"
+
+    struct VertexInfo
+    {
+        float2 uv : TEXCOORD0;
+        float4 vertex : POSITION;
+    };
+
+    struct PixelData
+    {
+        float2 uv : TEXCOORD0;
+        float4 vertex : SV_POSITION;
+    };
+
+    sampler2D _MainTex;
+
+    float4 _MainTex_ST;
+
+    int _SetScreen ;
+        float _StepTime; // This receives the value from C#
+
+        PixelData vert (VertexInfo v)
+    {
+        PixelData o;
+        o.vertex = UnityObjectToClipPos(v.vertex);
+        o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+        return o;
+    }
+
+    fixed4 frag (PixelData i) : SV_Target
+    {
+        
+        // THIS CODE MEANS
+        // HOW TO RUN THE PIXELS OF THE SCREEN.
+        
+        float2 uv =  i.uv ;
+        
+        fixed4 colorWhite = float4(1,1,1,1); // Color white.
+        fixed4 colorBlack = float4(0,0,0,1); // Color Black.
+        
+        col = fixed4(uv.x, uv.y , 0.0, 1.0);
+        return col;
+    }
+
+    ENDCG
+
+</code></pre>
+
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{What we we need to do now first of all is to explain how to make use of this pixel computers.}\\
+&\text{to do such thing we got to create and environment where we can identify where the computing can happen.}\\
+&\text{Lets explain all this stages.}\\    
+\end{aligned}$$
+    
+<pre><code class="language-hlsl">
+    CGPROGRAM
+    #pragma vertex vert alpha
+    #pragma fragment frag alpha
+    
+    #include "UnityCG.cginc"
+        
+</code></pre>
+
+$$\begin{aligned}
+&\text{for each pixel and vertex. depending to which type of geometry you are writing them for}\\
+&\bullet \text{\textbf{\large {the "CGPROGRAM"}}, headline tag define the start of the program for the shader, which then is going to run }\\
+&\text{on your GPU, imagine as if you were running your program in your console, but instead of running it in your }\\
+&\text{you run it on the GPU.}\\
+&\bullet\text{\textbf{\large {\#pragma}} vertex vert alpha and \#pragma fragment frag alpha, are flags that allow the program to run }\\
+&\text{specificly on a section of the GPU, and that it should provide the rest of the run program with the }\\
+&\text{functions for the vertex and fragment shader, so it verifies when the function outputs. }\\
+
+&\bullet\text{\textbf{\large {\#include "UnityCG.cginc"}}, is a library that would allow you to make use of integrated functions and  }\\
+&\text{methods build upon unity, that we are going to use in the future to make uses of the engine which is UNITY, }\\
+&\text{to create layers of abstraction between the different qualities of an already created environment.  }\\
+\end{aligned}$$
+    
+    
+</div>
+
+
+<div style = "font-size: 21px">
+    
+<pre><code class="language-hlsl">
+
+    struct VertexInfo
+    {
+        float2 uv : TEXCOORD0;
+        float4 vertex : POSITION;
+    };
+
+    struct PixelData
+    {
+        float2 uv : TEXCOORD0;
+        float4 vertex : SV_POSITION;
+    };
+
+</code></pre>
+
+$$\begin{aligned}
+
+&\bullet\text{\textbf{\large {struct VertexInfo and struct PixelData}} , the next lines are going to allow us to directly specify on the chip }\\
+&\text{which information we need to use and which is going to be the name that we are going to use to make use of them.}\\
+&\bullet\text{\textbf{\large {TEXCOORD0}}, litteraly specify a section of the Chip, in the gpu, that is going to be used as minimicrocomputers}\\
+&\text{this is basically a section that runs the simulated pixels in the chip, so we can evaluate them. and operate them by}\\
+&\text{launching a set instrution of instructions over them.}\\
+
+&\bullet\text{\textbf{\large {POSITION}} and \textbf{\large {SV\_POSITION}}, is the same as the previous TEXCOORD0, but instead for vertexes, so it usually tents to }\\
+
+&\text{be a small number of vertexes, but with new chips and new optimizations this number has also increase, we got to keep in }\\
+&\text{mind that a section of our TEXCOORD0 is going to run on specifily sections of the vertexes which are usually triangles.}\\
+&\text{keep in mind that the TEXCOORD0 information map to specific triangles. made out of the vertexes}\\
+&\text{the reason why there are two different POSITION and SV\_POSITION, is cuz one is before translating them in the space}\\
+&\text{ and the second one is after the vertexes were translated.}\\
+&\text{}\\
+
+\end{aligned}$$
+
+
+</div>
+    
+
+<div style = "font-size: 21px">
+    
+<pre><code class="language-hlsl">
+
+    sampler2D _MainTex;
+    float4 _MainTex_ST;
+    int _SetScreen ;
+    float _StepTime; 
+
+</code></pre>
+        <!-- &\bullet\text{POSITION and SV\_POSITION, is the same as the previous TEXCOORD0, but instead for vertexes, so it usually tents to be a  }\\ -->
+    
+$$\begin{aligned}
+&\bullet\text{\textbf{\large {sampler2D}} \_MainTex, there are going to be similar  data structures, like this one but instead of thinking}\\
+&\text{it as an array you should think of them as an image, that you could access if you iterate over the (x,y) axis,}\\
+&\text{the reason why information is easy to store this way, is cuz remember that chips are basically cables and switches}\\
+&\text{all miniaturize to the atom scale, so arrange things in lines is more difficult cuz phisically is harder to build }\\
+&\text{is like a book, which thing is easier to handle, a single sheet of paper like a rool of paper,}\\
+&\text{ or a notebook where you can swtich to each page depending which thing you need. cuz if it were the roll, the}\\
+&\text{in order to read something in the middle of the roll thing you write either you need to unroll it  or unroll it }\\
+&\bullet\text{\textbf{\large {float4}}, this one is like a mini array of 4 items, that you can populate with floats, so prety easy.}\\
+&\text{usually is used to represent or colors , RGBW, or position in space XYZW}\\        
+&\bullet\text{\textbf{\large {float}}, this is a basic float, really clear and straight}\\
+&\bullet\text{\textbf{\large {int}}, this is a integer, normally running things in integer tents to be easier. when data operations are necessary.}\\
+&\text{}\\
+\end{aligned}$$
+    
+</div>
+        
+    
+<div style = "font-size: 21px">
+    
+<pre><code class="language-hlsl">
+
+    PixelData vert (VertexInfo v)
+    {
+        PixelData o;
+        o.vertex = UnityObjectToClipPos(v.vertex);
+        o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+        return o;
+    }
+
+</code></pre>
+        <!-- &\bullet\text{POSITION and SV\_POSITION, is the same as the previous TEXCOORD0, but instead for vertexes, so it usually tents to be a  }\\ -->
+    
+    $$\begin{aligned}
+    &\bullet\text{This function got for only purpose in this shader, is to populate the information in the chips, withe the position of }\\
+    &\text{the vertexes, in this case we are using a plane as our main shape our canvas where to position the vertexes, so imagine a }\\
+    &\text{ square build up by two triangles. or a square build up or draw up by rectangle triangles.}\\
+    &\text{}\\    
+    \end{aligned}$$
+    
+    
+</div>
+        
+
+    
+
+<img  src="Img/SquareTriangles.png"  style="display: block; margin: 0 auto; width: 30%;">
+<img  src="Img/SquareTrianglesLanes.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+
+
+
+
+<div style = "font-size: 21px">
+    
+<pre><code class="language-hlsl">
+
+    fixed4 frag (PixelData i) : SV_Target
+    {
+        // THIS CODE MEANS
+        // HOW TO RUN THE PIXELS OF THE SCREEN.
+        
+        fixed4 colorWhite = float4(1,1,1,1); // Color white.
+        fixed4 colorBlack = float4(0,0,0,1); // Color Black.
+        float2 uv =  i.uv ;
+    
+        fixed4 col = fixed4(uv.x, uv.y , 0.0, 1.0);
+    
+        return col;
+    
+    }
+
+</code></pre>
+        <!-- &\bullet\text{POSITION and SV\_POSITION, is the same as the previous TEXCOORD0, but instead for vertexes, so it usually tents to be a  }\\ -->
+
+$$\begin{aligned}        
+&\text{This function is the one where we are going spend a lot of time on , its because here is where the mathematics }\\
+&\text{for each single mini computer happens, imagine that each single pixel got a computer on, and what you are going to do is }\\
+&\text{use a computer over each pixel to modify it, what you are going to do is modify the pixel by doing different types of }\\
+&\text{mathematical operations so all of the colors could change in tandem and in unisom in the way we want, }\\
+&\text{that's exactly what we are doing, literally 3d is practically and illusion, that looks like there is something in depth}\\
+&\text{when in reality is just colors being display in a very particular way, in unison, or unity? the way you want.}\\
+&\bullet\text{\textbf{\large {SV\_Target}} what this means is like the vertexes flag that we use previously, is that this is }\\
+&\text{ going to set things up for placing or position orders, but instead to set vertexes is going to set pixels.}\\
+&\text{}\\
+&\text{the pixels came from the structured that we set up at the beggining this structured is the one that is going to work}\\
+&\text{as holder of the pixels, the way how the chip stored this information is on planes or more clearer, images or fields}\\
+&\text{of transistors that are going to work as a coordinate system, (X,Y), where the information is going to be updated and }\\
+&\text{retrived, so as its flag stated TEXCOORD0, it came in a coordinate system.}\\
+&\text{so in the structured ~i~, and the subvariable uv, the pixels are abstracted.}\\
+&\text{}\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+    fixed4 frag (PixelData i) : SV_Target
+
+</code></pre>
+
+
+$$\begin{aligned}
+        
+&\text{now is where all we been saying about mini computers, and computers inside computers start to get sense, the reason  }\\
+&\text{of this is cuz, the thing that we are going to operate from this moment on is the pixel, from the moment the function}\\
+&\text{ "frag" start, the operation that we are going to process from this precise instant is on the pixel, we are going to make }\\
+&\text{operations that are going to make the pixel change its colors in a way that is very particular, a very distinctive way }\\
+&\text{to reorder the pixel in multiple ways. that it allow us to visualize things, represent things, organize details, but overall}\\
+&\text{change its colors to make everything got sense, give sense to the pixel is what we are doing. direction, order, cohesion}\\
+&\text{clarity, steps, ways, paths, to behave according the representations that we want to set up for it to follow. }\\
+&\text{}\\
+&\text{So when we evaluate like the did in \textbf{\large{float 2 uv}} is that we are getting litteraly is the coordinates of the pixel }\\
+&\text{we are supposed to operate, the information that this variable contain is the coordinate of the pixel that we are going to modify}\\
+&\text{normaly this coordinates that we it set up for default came from \textbf{\large{-1 to 0}} so if we output from the function }\\
+&\text{as it detail on we must create a \textbf{\large{fixed4}} data type, that we could use to set the colors of the pixels, we could }\\
+&\text{use float instead but for this example we are going to use the default, which is the fixed4, whom came with }\\
+&\text{8-bit value ranging from -2 to 2, to output a color, and how we are going to populate the color with, easy we are going to set up }\\
+&\text{the values of color, usualy this go, from 0 to 1, for each RGB, and W for the albedo or brightness normally. }\\
+&\text{by using the coordinates from the TEXCOORD0, that came from 0 to 1 for all the position of the pixels in the coordinate system}\\
+&\text{in the chip.}\\
+
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+    float2 uv =  i.uv ;
+
+</code></pre>
+
+        
+$$\begin{aligned}
+
+&\text{So if we populate the color using this information \textbf{\large {fixed4(uv.x, uv.y, 0, 1.0)}}, we are going to notice}\\
+&\text{that the elements from the bottom left are going to be black cuz the position they are representing is the  (0,0) coordinate,}\\
+&\text{but if instead by go to the x axis limit which would be the bottom right of the screen we are goinig to check that the  }\\
+&\text{color is going to be red cuz the position is going to be in the corodinate system (1,0) but if we go to the right up corner (1,1)}\\
+&\text{we are going to check that if we mix two colors red and green we are going to get yellow which is the collor that's on the }\\
+&\text{top right corner.}\\
+
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+    fixed4 col = fixed4(uv.x, uv.y , 0.0, 1.0);
+
+</code></pre>
+        
+   
+</div>
+
+<img  src="Img/FirstImageShader.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<br>
+<br>
+
+
+<div style = "font-size: 21px">
+ 
+
+$$\begin{aligned}
+
+&\text{if we instead make the output variable to (1,1,1,1) we are going to output the color white }\\
+
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+            
+    fixed4 frag (PixelData i) : SV_Target
+    {
+        
+        // THIS CODE MEANS
+        // HOW TO RUN THE PIXELS OF THE SCREEN.
+        
+        fixed4 colorWhite = float4(1,1,1,1); // Color white.
+        fixed4 colorBlack = float4(0,0,0,1); // Color Black.
+        
+        float2 uv =  i.uv ;
+        
+        
+        fixed4 col = colorWhite;
+        
+        return col;
+        
+    }
+            
+</code></pre>
+        
+</div>        
+
+<img  src="Img/WhiteShaderColor.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<br>
+
+
+<div style = "font-size: 21px">
+ 
+
+$$\begin{aligned}
+
+&\text{but if we change the color x variable for 1 we are going to make the output variable to (1,0,0,1)}\\
+&\text{the output we expect in this case as the RGBW states, we spect a 100\% red as output }\\
+
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+            
+fixed4 frag (PixelData i) : SV_Target
+{
+    
+    // THIS CODE MEANS
+    // HOW TO RUN THE PIXELS OF THE SCREEN.
+    
+    fixed4 colorWhite = float4(1,1,1,1); // Color white.
+    fixed4 colorBlack = float4(0,0,0,1); // Color Black.
+    fixed4 colorRed = float4(1,0,0,1); // Color Red.
+    
+    float2 uv =  i.uv ;
+    
+    
+    fixed4 col = colorRed;
+    
+    return col;
+    
+}
+            
+</code></pre>
+        
+</div>        
+
+<img  src="Img/RedShaderColor.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<br>
+
+
+<!-- 
+_______  _______  _______  _______ _________          _______ _________ _______  _______ 
+(  ____ \(       )(  ___  )(  ___  )\__   __/|\     /|(  ____ \\__   __/(  ____ \(  ____ )
+| (    \/| () () || (   ) || (   ) |   ) (   | )   ( || (    \/   ) (   | (    \/| (    )|
+| (_____ | || || || |   | || |   | |   | |   | (___) || (_____    | |   | (__    | (____)|
+(_____  )| |(_)| || |   | || |   | |   | |   |  ___  |(_____  )   | |   |  __)   |  _____)
+      ) || |   | || |   | || |   | |   | |   | (   ) |      ) |   | |   | (      | (      
+/\____) || )   ( || (___) || (___) |   | |   | )   ( |/\____) |   | |   | (____/\| )      
+\_______)|/     \|(_______)(_______)   )_(   |/     \|\_______)   )_(   (_______/|/       
+                                                                                           
+-->
+
+<hr>
+<hr>
+<h1 style="font-size: 40px;"><b> Smoothstep </b></h1>
+<br>
+
+<hr>
+<div style = "font-size: 21px">
+    
+$$\LARGE\text{Smoothstep main Theory}$$
+
+</div>        
+<hr>
+
+
+
+<div style = "font-size: 21px">
+ 
+        <!-- &\bullet\text{POSITION and SV\_POSITION, is the same as the previous TEXCOORD0, but instead for vertexes, so it usually tents to be a  }\\ -->
+
+$$\begin{aligned}
+
+&\text{the smooth step functions is a mathematical method, that is going to help us blend things into a more smoother data }\\
+&\text{display of information, in this case we are talking about pixels, but the questions that you maybe are wondering }\\
+&\text{is how this works, which are the things that this thing does that makes this thing to do that thing we . }\\
+&\text{set up to do. }\\
+&\text{lets brake it down in pieces. }\\
+
+\end{aligned}$$
+        
+<pre><code class="language-hlsl">
+            
+    float a = a;
+    float b = b;
+    float x = x;
+
+    float d = smoothstep(a, b, x);
+            
+</code></pre>
+        
+$$\begin{aligned}
+
+&\text{this is how the smoothstep function look in code, provided by the shading language library. in this case is CG}\\
+&\text{the standard for Unity, and also the previous version for HLSL, the DirectX shading language for Microsoft.}\\
+&\text{}\\
+&\text{The idea right now is to explain what is behind curtains that we could use to explain why the things happen}\\
+&\text{the way they do.}\\
+&\text{The question now, what's behind curtains? EASY like cutting butter, just and simple math}\\
+
+\end{aligned}$$
+
+$$\text{}$$
+
+$$\text{this is the function represented in mathematical notation}$$
+
+$$\text{smoothstep}(a, b, x) = S(a, b, x)$$
+
+$$\\[5ex]$$
+
+$$\text{This is the output we want to get from the function}$$
+$$S( a, b; x) = S = 3t^2 - 2t^3$$    
+
+$$\\[5ex]$$
+        
+$$\text{remember that there are multiples ways to get this output our similar ones, not just this way}$$
+$$\text{We are going to derive this polinomial function later}$$
+        
+$$\\[5ex]$$
+
+        
+$$\begin{aligned}
+
+&\text{Now the question here is how we could define } \quad t \quad \text{ in such a way that fills the gaps for our }\\
+&\text{function, the polimomial got as primary purpose to make a transition of data from one point to the other}\\
+&\text{the idea, is to make information plot into this determined field, so we can transition}\\
+&\text{between data as the name of the function state in a smoothly fashion, but how we can do such thing.}\\
+&\text{The output is going to be the polinomial function solution for each t, but how we populate this function ?}\\
+&\text{now how we could reorganize or reorder information from one size end to the other}\\
+        
+\end{aligned}$$
+
+$$\\[5ex]$$
+        
+        
+$$\begin{aligned}
+
+&\text{that's what the clamp function is going to help us do, what we are going to do with the clamp function}\\  
+&\text{is limit the function bounds so each of the points on one end is map to the other end directly, which means}\\
+&\text{that for a certain section of the\quad }\mathbb{R} \quad \text{numbers, we are going to map this section}\\
+&\text{between the section } 0 - 1 \quad \text{of the} \quad \mathbb{R}\quad \text{numbers.}
+\\[1.5em]
+        
+\end{aligned}$$
+
+$$t = \left(\text{clamp}\left(\frac{x - a}{b - a},\quad 0,\quad 1\right)\right)$$
+$$t = \text{max}\left(0, \quad\text{min}\left(1, \quad \frac{x - a}{b - a}\right)\right)$$
+
+$$\begin{aligned}        
+
+\\[1.5em]
+&\text{so lets define the first section as:} \\
+&\bullet\quad 1\text{-}section = f \quad : \mathbb{R} \to [a, b]\\
+&\text{And the second section as:}\\
+&\bullet\quad 2\text{-}section = f  \quad : \mathbb{R} \to [0, 1]
+\\[1.5em]        
+&\text{So the idea here is to make a map from:}\\
+&\text{}\quad \mathbb{R} \to [a, b] \implies \mathbb{R} \to [0, 1] \\
+&\text{Or in other terms:}\\
+&\quad 1\text{-}section: \mathbb{R} \to [a, b] \quad \implies \quad 2\text{-}section: \mathbb{R} \to [0, 1]
+    
+\end{aligned}$$
+
+
+$$\begin{aligned}
+
+\\[0.5em]        
+&\text{The way how we do the mapping, besides on the properties of division, which are }\\
+&\text{How many times the denominator could fit in the numerator, how many denominators elements}\\
+&\text{are necessary to make equality to the numerator}\\
+
+\end{aligned}$$
+        
+$$\\[2.0em]$$
+        
+$$\frac{\text{Numerator}}{\text{Denominator}}$$
+        
+$$\\[2.0em]$$
+        
+$$\frac{x - a}{b - a}$$
+
+$$\\[3.0em]$$
+
+$$\text{Lets understand the first section of this division}\\$$
+        
+$${x - a}$$
+    
+           
+$$\begin{aligned}
+        
+\\[0.5em]        
+&\text{So how we could make interpretation or use of the division definition into the current formula, simple}\\
+&\text{the process we are going to follow is pick the first section of the }\mathbb{R} \text{ that'll be the domain} \\
+&\text{and identify if the point that we are evaluating is in the segment or not, and if yes, check how far}\\
+&\text{is the point on the section from the beggining bound of the section.}\\
+        
+\end{aligned}$$
+
+</div>
+    
+    
+<img  src="Img/UnitaryMapping.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+<div style = "font-size: 21px">
+
+
+$$\begin{aligned}
+&\text{So if the point } ''X'' \text{ from the real numbers } ''X'' \in \mathbb{R} \text{ is } \textbf{BEFORE}\text{ the } ''a'' \text{ bound, which means that}\\
+\end{aligned}$$
+$$X < a$$
+$$ \text{So if we make a substraction}$$
+$$ for \ all \quad x < a \implies (x - a) = \mathbb{R} < a =  always\;in\ \mathbb{R}^-$$
+$$\text{which means that the }"X"\text{ point is } \textbf{BEFORE}\text{ the } "a" \text{ bound}\\$$
+
+$$\\[3.0em]$$
+
+$$\begin{aligned} 
+&\text{So if the point } ''X'' \text{ from the real numbers } ''X'' \in \mathbb{R} \text{ is } \textbf{IN} \text{ the } ''a'' \text{ bound, means that}\\
+\end{aligned}$$
+$$X = a$$
+$$ \text{So if we make a substraction}$$
+$$ for \ all \quad x = a \implies (x - a) = 0 =  always\;in\ 0$$
+$$\text{which means that the }"X"\text{ point is exactly } \textbf{AT}\text{ the } "a" \text{ bound}\\$$
+ 
+$$\\[3.0em]$$
+
+$$\begin{aligned}
+
+&\text{So if the point } ''X'' \text{ from the real numbers } ''X'' \in \mathbb{R} \text{ is } \textbf{AFTER} \text{ the } ''a'' \text{ bound, which means that}\\
+        
+\end{aligned}$$
+$$X > a$$
+$$ \text{So if we make a substraction}$$
+$$ for \ all \quad x > a \implies (x - a) = \mathbb{R} > a =  always\;in\ \mathbb{R}^+$$
+$$\text{which means that the }"X"\text{ point is } \textbf{AFTER}\text{ the } "a" \text{ bound}\\$$
+
+</div>
+<div style = "font-size: 21px">
+        
+$$\\[3.0em]$$
+    
+$$\begin{aligned}
+&\text{Rememeber that also this substraction represent the distance from } "X" \ to\ "a" \text{ independly of the sign}  \\
+\end{aligned}$$
+$$\left| a - b \right| = \left| b - a \right|$$
+        
+        
+$$\\[2.0em]$$
+$$\\[3.0em]$$
+$$\text{lets make and example about each situation:}\\$$
+$$\\[3.0em]$$
+        
+$$\begin{aligned}
+&\text{Given the bound } a = 10 \text{ and the point } x = 4: \\
+&x < a \implies 4 < 10 \\
+\\
+&\textbf{1. Subtraction:} \\
+&x - a = 4 - 10 = -6 \\
+\\
+&\textbf{2. Result:} \\
+&-6 < 0 \implies (x - a) \in \mathbb{R}^- \\
+\\
+&\text{Let } a = 10 \text{ and } b = 4 \\
+\\
+&\textbf{Left Side: } |a - b| \\
+&|10 - 4| = |6| = 6 \\
+\\
+&\textbf{Right Side: } |b - a| \\
+&|4 - 10| = |-6| = 6 \\
+\\
+&\textbf{Conclusion:} \\
+&|10 - 4| = |4 - 10| \implies 6 = 6 \\
+\\
+&\therefore \text{The point } x \text{ is confirmed to be \textbf{BEFORE} the bound } a.
+\end{aligned}$$
+        
+$$\\[3.0em]$$
+
+
+$$\begin{aligned}
+&\text{Given the bound } a = 10 \text{ and the point } x = 10: \\
+&x = a \implies 10 = 10 \\
+\\
+&\textbf{1. Subtraction:} \\
+&x - a = 10 - 10 = 0 \\
+\\
+&\textbf{2. Result:} \\
+&x - a = 0 \implies (x - a) \notin \mathbb{R}^+ \cup \mathbb{R}^- \\
+\\
+&\text{Let the bound } a = 10 \text{ and the point } b = 10 \\
+\\
+&\textbf{Left Side: } |a - b| \\
+&|10 - 10| = |0| = 0 \\
+\\
+&\textbf{Right Side: } |b - a| \\
+&|10 - 10| = |0| = 0 \\
+\\
+&\textbf{Conclusion:} \\
+&|10 - 10| = |10 - 10| \implies 0 = 0
+\\
+&\therefore \text{The point } x \text{ is confirmed to be exactly \textbf{AT} the bound } a.
+\end{aligned}$$
+
+</div>
+<div style = "font-size: 21px">
+        
+$$\\[3.0em]$$
+
+
+$$\begin{aligned}
+&\text{Given the bound } a = 10 \text{ and the point } x = 15: \\
+&x > a \implies 15 > 10 \\
+\\
+&\textbf{1. Subtraction:} \\
+&x - a = 15 - 10 = 5 \\
+\\
+&\textbf{2. Result:} \\
+&5 > 0 \implies (x - a) \in \mathbb{R}^+ \\
+\\
+&\text{Let } a = 10 \text{ and } b = 15 \\
+\\
+&\textbf{Left Side: } |a - b| \\
+&|10 - 15| = |-5| = 5 \\
+\\
+&\textbf{Right Side: } |b - a| \\
+&|15 - 10| = |5| = 5 \\
+\\
+&\textbf{Conclusion:} \\
+&|10 - 15| = |15 - 10| \implies 5 = 5
+\\
+&\therefore \text{The point } x \text{ is confirmed to be \textbf{AFTER} the bound } a.
+\end{aligned}$$
+        
+$$\huge\boxed{x - a}$$
+
+        
+$$\\[4.0em]$$
+$$\text{Now what we had define how the numerator of the division works, so lets break down the denominator  }$$
+$$\frac{x - a}{b - a} \implies \frac{\text{Numerator}}{\text{Denominator}}$$
+$$\\[2.0em]$$
+
+$$\begin{aligned}        
+&\text{What is in reality the operation that in the Denominator is really following, which is in reality the steps that }\\
+&\text{this substraction is going to do to the entire formula, which are in reality the motions that are going to be }\\
+&\text{modify in the entire of this equation ann in which way, which are the things that this operation is going to affect }\\
+&\text{in the entire solution of this equation, how and why.}
+&\\[2.0em] 
+\end{aligned}$$
+        
+$${b - a}$$
+$$\\[2.0em]$$
+
+
+$$\begin{aligned}
+&\text{We got to define the bounds of the substraccion, so its basically as the previous substraction, but in this case }\\
+&\text{is extremely necessary to define if the bounds are or } a < b \ or \ a > b \\
+\end{aligned}$$
+
+$$\begin{aligned}        
+&\text{if the bounds of the denominator are set to  } a < b  \\
+&\text{then this operation is going to lets us now the distance from position } a \text{ to position } b \text{ in the }\mathbb{R} \\
+&\text{ this result would always, ALWAYS + be positive } \\        
+&for all \ a < b \implies (b - a) \in \mathbb{R}^+ \\
+\end{aligned}$$
+
+</div>
+<div style = "font-size: 21px">
+        
+$$\\[2.0em]$$
+
+        
+$$\begin{aligned}        
+&\text{if the bounds of the denominator are set to  } a > b  \\ 
+&\text{then this operation is going to lets us now the distance from position } a \text{ to position } b \text{ in the }\mathbb{R} \\
+&\text{ this result would always, ALWAYS - be negative  } \\
+&forall \ a > b \implies (b - a) \in \mathbb{R}^- \\
+\end{aligned}$$
+
+$$\\[2.0em]$$    
+$${b - a}$$
+$$\\[2.0em]$$    
+
+$$\begin{aligned}        
+&\text{lets set an example right now as... } a < b \text{ ...so we could check exactly what is happening.} \\ 
+&\text{ as we konw... }, |b - a|, \text{... if ...} a < b ,\ \text{ for each every substraction we are going to get a positive value } \\
+&\text{ but the question here is what does this values represent in reality, which is the definition of this substraction, easy,} \\
+&\text{ the line or bar, size that is going to be our ruler, the thing that allows us to measure things, the unit of measure. } \\
+\end{aligned}$$
+
+
+</div>
+
+<img  src="Img/UnitaryMappingReal.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}        
+&\text{ now you'll be wondering which is exactly the things that we are going to measure, which are the values that we are going to  } \\
+&\text{ measure, which are the ideas that we need to specify here, so we could understand how we could measure things with a value  } \\
+&\text{ the idea besides in the expression theory and concepts of DIVISIONS, so lets explain how this sitaution works. } \\
+\end{aligned}$$
+
+$${|x-a|}\\$$
+
+$$\begin{aligned}        
+&\text{We already know that this expression is going to tell us how far is the }\ x \ \text{ from the }\ a   \\
+&\text{independly of the sign.} \\
+\end{aligned}$$
+
+$${x-a}\\$$
+
+$$\begin{aligned}        
+&\text{and this expression is going to provide us with a sign, which is going to tell us if the... } x \text{ ...is before the... } a \\
+&\text{or if the... } x \text{ ... is after the ... } a \text{ ... position on the line.} \\
+&\text{if the substraction equals to 0, that means that the... } x \text{ ... is currently at the same spot or position  as... } a \\
+\end{aligned}$$
+        
+        
+$$\begin{aligned}        
+&\text{ and we also know that the difference between... } b - a \text{ ... when... } b > a \text{ ... would always be positive }\\
+&\text{ and the value that this operation is equal is the distance from... } a \text{ ...to... } b \\
+\end{aligned}$$
+        
+        
+$$\begin{aligned}        
+&\text{So once we had define how the first distance is measure, and we are able to identify on which position of the line the... } x \\
+&\text{is located, then the question that rise up is how we could use this information, what can we do to make this information }\\
+&\text{useful, well now the idea is to make use of the information that we just define into something useful.}\\
+&\text{and usefulness, only appear when we are answering questions, so which is the question here that we want to answer.}\\
+&\text{the questions here and the theorem that we want to prove is the next one}\\
+\end{aligned}$$
+
+$$\\[5ex]$$
+        
+        <!-- $$\ how\ many\ b - a \ are \ in \ x - a  $$         -->
+$$\large\textbf{how many } \boldsymbol{(b - a)} \textbf{ are in } \boldsymbol{(x - a)} \textbf{ ? }$$
+$$\\[5ex]$$
+
+$$\large\boldsymbol{\frac{x - a}{b - a}} = \boldsymbol{\dfrac{\textbf{line to measure}}{\textbf{ruler}}}$$
+$$\\[5ex]$$
+
+
+
+</div>
+
+<img  src="Img/RulerAndCable.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<div style = "font-size: 21px">
+
+    
+$$\begin{aligned}        
+&\text{so now that we are able to measure how many denominators are in the numerator, then we need to "clamp" }\\
+&\text{which are going to help us identify or determine which values of... } x - a  \text{ ... are going to be useful for us}\\
+&\text{in this case we are going to set the values between... } 0 \ \& \  1 \text{ ...which are going to represent the values within the }\\
+&\text{range of... } b - a \text{ ... which is the unit of measure that is going to help us map the values of... } x \text{ ...to the }\\
+&\text{range of... } 0 \  \& \ 1 \\
+&\text{remember that witin the } \mathbb{R} \text{ numbers, exist an infinite number of items, that we are going to use to map from one }\\
+&\text{representation to the other, or you could also say from one line space to the other line space.}\\
+\end{aligned}$$
+
+$$\begin{aligned}
+&\text{Given: } x = 2, \ a = 10, \ b = 30 \\
+\\
+&\textbf{Step 1: Calculate the Numerator (Line to measure)} \\
+&x - a = 2 - 10 = -8 \\
+\\
+&\textbf{Step 2: Calculate the Denominator (Ruler)} \\
+&b - a = 30 - 10 = 20 \\
+\\
+&\textbf{Step 3: Form the Fraction} \\
+&\frac{x - a}{b - a} = \frac{-8}{20} = -0.4 \\
+\\
+&\therefore \text{The result is negative because the point } x \text{ is outside the bound to the left.}
+
+\\[5ex]
+
+&\text{Given: } a = 10, \ b = 30, \ x = 10 \\
+\\
+&\text{Condition: } x = a \implies 10 = 10 \\
+\\
+&\textbf{1. Calculate the Numerator (Line to measure)} \\
+&x - a = 10 - 10 = 0 \\
+\\
+&\textbf{2. Calculate the Denominator (Ruler)} \\
+&b - a = 30 - 10 = 20 \\
+\\
+&\textbf{3. Form the Fraction} \\
+&\frac{x - a}{b - a} = \frac{0}{20} = 0 \\
+\\
+&\therefore \text{The result is exactly \textbf{0} because the point } x \text{ is at the start of the ruler.}
+
+\\[5ex]
+    
+&\text{Given: } a = 10, \ b = 30, \ x = 25 \\
+\\
+&\text{Condition: } a < x < b \quad (10 < 25 < 30) \\
+\\
+&\textbf{1. Calculate the Numerator (Line to measure)} \\
+&x - a = 25 - 10 = 15 \\
+\\
+&\textbf{2. Calculate the Denominator (Ruler)} \\
+&b - a = 30 - 10 = 20 \\
+\\
+&\textbf{3. Form the Fraction} \\
+&\frac{x - a}{b - a} = \frac{15}{20} = 0.75 \\
+\\
+&\therefore \text{The result is a positive decimal } (0.75) \text{ because the point } x \text{ is \textbf{AFTER} } a \text{ but \textbf{WITHIN} the ruler.}
+
+\\[5ex]
+
+&\text{Given: } a = 10, \ b = 30, \ x = 40 \\
+\\
+&\text{Condition: } x > b \implies 40 > 30 \\
+\\
+&\textbf{1. Calculate the Numerator (Line to measure)} \\
+&x - a = 40 - 10 = 30 \\
+\\
+&\textbf{2. Calculate the Denominator (Ruler)} \\
+&b - a = 30 - 10 = 20 \\
+\\
+&\textbf{3. Form the Fraction} \\
+&\frac{x - a}{b - a} = \frac{30}{20} = 1.5 \\
+\\
+&\therefore \text{The result is \textbf{1.5}} \text{ because the point } x \text{ has exceeded the ruler by } 50\%.
+\end{aligned}$$
+
+</div>
+
+<div style = "font-size: 21px">
+
+
+$$\\[5ex]$$
+    
+$$\begin{aligned}  
+&\text{Now the next thing would be add the clamp function which is nothing else but a way to set up the bounds from } \\
+&\text{where we want to number line to be usefull } \\
+&\text{so this is a simple comparation between which is the maximum and which is the minimum between the result of } \\
+&\text{the division and the bounds that we are going to set.}\\
+\end{aligned}$$
+
+$$\\[5ex]$$
+    
+$$ruler = \frac{x - a}{b - a}$$
+
+$$\\[5ex]$$
+
+$$t = \max(0, \min(1, \ ruler))$$
+
+$$\\[5ex]$$
+    
+$$\text{smoothstep}(a, b, x) = S(a, b, x) = S = 3t^2 - 2t^3$$
+ 
+$$\\[5ex]$$
+
+
+    
+
+</div>
+
+<img  src="Img/FunctionSmoothstep.png"  style="display: block; margin: 0 auto; width: 60%;">
+
+<div style = "font-size: 21px">
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{Now the only thing that miss is how to derive the cubic polinomial, which is understand from which place}\\
+&\text{this formula came from.}\\
+\end{aligned}$$
+    
+
+$$\begin{aligned}
+&\textbf{1. The Constraints} \\
+&\text{To derive the Smoothstep function for the interval } t \in [0,1], \\
+&\text{we define four boundary conditions:} \\
+\\
+&\begin{aligned}
+&\text{Start Position:} & S(0) &= 0 \\
+&\text{End Position:}   & S(1) &= 1 \\
+&\text{Start Velocity:} & S'(0) &= 0 \\
+&\text{End Velocity:}   & S'(1) &= 0
+\end{aligned} \\
+\\
+&\textbf{2. The Cubic Derivation} \\
+&\text{We begin with a general cubic polynomial:} \\
+&S(t) = at^3 + bt^2 + ct + d \\
+\\
+&\text{First, we find its derivative:} \\
+&S'(t) = 3at^2 + 2bt + c \\
+\\
+&\text{Applying the initial constraints } (t=0): \\
+&S(0) = a(0)^3 + b(0)^2 + c(0) + d = 0 \implies d = 0 \\
+&S'(0) = 3a(0)^2 + 2b(0) + c = 0 \implies c = 0 \\
+\\
+&\text{Applying the boundary constraints } (t=1): \\
+&S(1) = a(1)^3 + b(1)^2 = 1 \implies a + b = 1 \\
+&S'(1) = 3a(1)^2 + 2b(1) = 0 \implies 3a + 2b = 0 \\
+\\
+&\textbf{3. Solving the System} \\
+&\text{From the velocity equation:} \\
+&2b = -3a \implies b = -1.5a \\
+\\
+&\text{Substituting } b \text{ into the position equation:} \\
+&a + (-1.5a) = 1 \\
+&-0.5a = 1 \implies a = -2 \\
+\\
+&\text{Solving for } b: \\
+&b = -1.5(-2) \implies b = 3 \\
+\\
+&\textbf{4. Final Result} \\
+&\text{Plugging the constants back into the original polynomial, we arrive at:} \\
+&S(t) = 3t^2 - 2t^3
+\end{aligned}$$
+
+
+$$\\[15ex]$$
+                
+$$\begin{aligned}  
+&\text{Other way to derive this function is by lerping between two specific functions.} \\
+        
+\end{aligned}$$
+$$a = t^2 \quad (Ease\ In)$$
+
+$$b = 2t - t^2  \quad (Ease\ Out)$$ 
+
+$$\\[5ex]$$
+        
+$$\text{lerp}(a, b, t) = a + t(b - a)$$
+
+$$\\[5ex]$$
+    
+$$S(t) = \underbrace{t^2}_{a} + t(\underbrace{(2t - t^2)}_{b} - \underbrace{t^2}_{a})$$
+
+$$\\[5ex]$$
+        
+$$S(t) = t^2 + t((2t - t^2) - t^2)$$
+        
+$$\\[5ex]$$
+        
+$$S(t) = t^2 + t(2t - 2t^2)$$
+
+$$\\[5ex]$$        
+
+$$S(t) = t^2 + 2t^2 - 2t^3$$
+
+$$\\[5ex]$$        
+        
+$$S(t) = 3t^2 - 2t^3$$
+
+$$\\[5ex]$$
+    
+</div>
+
+<img  src="Img/LerpSmoothstep.png"  style="display: block; margin: 0 auto; width: 60%;">
+
+
+
+
+
+<!-- 
+______   _______  _______           _______ _________ _______  _______  _        _______ 
+(  __  \ (  ____ )(  ___  )|\     /|(  ____ \\__   __/(  ____ )(  ____ \( \      (  ____ \
+| (  \  )| (    )|| (   ) || )   ( || (    \/   ) (   | (    )|| (    \/| (      | (    \/
+| |   ) || (____)|| (___) || | _ | || |         | |   | (____)|| |      | |      | (__    
+| |   | ||     __)|  ___  || |( )| || |         | |   |     __)| |      | |      |  __)   
+| |   ) || (\ (   | (   ) || || || || |         | |   | (\ (   | |      | |      | (      
+| (__/  )| ) \ \__| )   ( || () () || (____/\___) (___| ) \ \__| (____/\| (____/\| (____/\
+(______/ |/   \__/|/     \|(_______)(_______/\_______/|/   \__/(_______/(_______/(_______/
+                                                                                           
+-->
+
+<hr>
+
+
+<hr>
+<h1 style="font-size: 40px;"><b> Circle </b></h1>
+<br>
+
+<hr>
+<div style = "font-size: 21px">
+    
+$$\LARGE\text{Draw Cicle main Theory}$$
+
+</div>        
+<hr>
+<br>
+  
+<div style = "font-size: 21px">
+    
+        <!-- &\bullet\text{POSITION and SV\_POSITION, is the same as the previous TEXCOORD0, but instead for vertexes, so it usually tents to be a  }\\ -->
+    
+$$\begin{aligned}        
+&\text{The things that we need to set from this moment on is how to place more mathematics in this field,  }\\
+&\text{cuz otherwise would be modified modify each single pixel by hand, and that is basically painting and drawing,}\\
+&\text{and we are neither painting or drawing sooooo.., what?}\\
+&\text{the way to make everything work here, is by making math happen, and the best way to make }\\
+&\text{something like that happen, is by specifying equations and detail more functions that we could use to }\\
+&\text{create more exemplifications of the goals that we had set }\\
+\end{aligned}$$
+
+$$\begin{aligned}
+&\text{the function that we are going to run a lot, and the one that we are going to use really much is going  }\\
+&\text{to be the frag functions the reason why is cuz we are currenctly operating on the plane,}\\
+&\text{or more specific on a plane, and our plan is to do such thing.}\\
+&\text{till we get a really good understanding of how signals work, and how we can make use of them, }\\
+&\text{we need to understand how we can make use of the signals and the best place to do such thing is the PLANE! }\\
+\end{aligned}$$
+        
+
+$$\begin{aligned}
+&\text{Now lets draw the easiest thing you could paint on a shader, like the easiest thing to imagine, }\\
+&\text{lets draw a CIRCLE!!!}\\
+&\text{So how we are going to do that, simple lets define what a circle really is, }\\
+&\text{lets begin by understandingwhat defines a circle}\\
+&\\[2ex]
+\end{aligned}$$
+    
+$$\begin{aligned}        
+&\LARGE\textbf{Circle:}\\
+&\text{A circle in theory are all the points where their distance to the center of the circle is less or equal than the radius  }\\
+\end{aligned}$$
+        
+
+$$\\[5ex]\\$$
+    
+$$\mathcal{C} = \{ (x, y) \in \mathbb{R}^2 \mid \sqrt{(x - h)^2 + (y - k)^2} \leq r \}$$
+
+$$\\[5ex]\\$$
+        
+$$\begin{aligned}
+&\text{Center Coordinates:}\quad (h, k) \\
+&\text{Arbitrary Point:}\quad (x, y) \\
+&\text{Radius:}\quad r \\
+\\
+&\textbf{The Distance Formula} \\
+&d = \sqrt{(x - h)^2 + (y - k)^2} \\
+\\
+&\textbf{The Geometric Constraint} \\
+&d \leq r \implies \sqrt{(x - h)^2 + (y - k)^2} \leq r\\
+\\
+&\text{Which is the same thing as this:} \\
+&(x - h)^2 + (y - k)^2 \leq r^2\\
+\\
+&\text{If the center is the origin:} \\        
+&(h, k) = (0, 0) \\
+&\text{Then}:
+\\[0.8em]
+&(x - 0)^2 + (y - 0)^2 \leq r^2\\
+\\
+&x^2 + y^2 \leq r^2\\
+\end{aligned}$$
+        <!-- &\\[0.1px] -->
+
+
+<pre><code class="language-hlsl">
+        
+fixed4 frag (PixelData i) : SV_Target
+{
+
+    // THIS CODE MEANS
+    // HOW TO RUN THE PIXELS OF THE SCREEN.
+    
+    fixed4 colorWhite = float4(1,1,1,1); // Color white.
+    fixed4 colorBlack = float4(0,0,0,1); // Color Black.
+
+    float4 col = colorBlack;    
+    float2 uv =  i.uv;
+	float2 coor = (uv * 2.0)  - 1.0;
+
+    float2 center = float2(0.0, 0.0);
+
+    float radius = 0.5;
+
+    float2 coor2 = coor - center;
+
+    if(length(coor2) <= radius)
+    {
+        col.x = 1.0;
+    }
+
+    col = fixed4(col.x, 0.0 , 0.0, 1.0);
+
+    return col;                
+}
+
+</code></pre>
+
+</div>
+
+<br>
+<img  src="Img/CartesianPlaneFirstCuadrant.png"  style="display: block; margin: 0 auto; width: 40%;">
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{Lets set the color to the background to pure black}\\
+\end{aligned}$$
+    
+<pre><code class="language-hlsl">
+    float4 col = colorBlack;    
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{So lets explain the things that are happening here, which are the steps that we are following through this code.}\\
+&\text{step by step we are going to understand how mathematics and computing are being evaluated}\\
+\end{aligned}$$
+
+$$\begin{aligned}
+&\text{the } \textbf{uv} \text{ states for all the points on the plane on } (x,y) \text{ representation}\\
+&\text{but remember that this first } \mathbf{i.uv}  \text{ is set up predetermine to the first cuadrant of  }\\
+&\text{cartesian plane }\\
+\end{aligned}$$
+    
+    
+    <!--  -->
+<pre><code class="language-hlsl">
+
+    float2 uv =  i.uv;        
+    float2 coordinateScale = (uv * 2.0) ;
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{when we multiply by 2, what we are really doing is extending the dimension of the points that we are   }\\
+&\text{going to fit into this plane, so instead of fitting from} 0\ to\ 1\ \text{we are making use from }\\
+&0\ to\ 2\\
+&\text{}\\
+\end{aligned}$$
+    
+    
+</div>
+
+<img  src="Img/CartesianRange2to2.png"  style="display: block; margin: 0 auto; width: 40%;">
+
+
+<div style = "font-size: 21px">
+    
+$$\begin{aligned}
+&\text{Now the that we had extend the size of the plane or more specifly the first cuadrant of the cartesian plane}\\
+&\text{what we are going to do is center the origin in the middle of the plane, and to so such thing we just need}\\
+&\text{to substract } -1.0 \text{ to the entire set of point so we end up with a general cartesian plane, on our} \\
+&\text{PLANE!, that we could use to plot functions and geometric things.}\\
+\end{aligned}$$
+        
+<pre><code class="language-hlsl">
+        
+    float2 coordinateScale = (uv * 2.0)  - 1.0;
+        
+</code></pre>
+</div>
+
+<img  src="Img/CartesianPlaneBase.png"  style="display: block; margin: 0 auto; width: 40%;">
+<br>
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{now what we are currently seeing in the plane is the yellowrange part of the previous cartesian plane this is  }\\
+&\text{the current plane we are seeing, on our screen, the yellow part would be the define space where we are going to }\\
+&\text{output things on.}\\
+&\text{}\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+    float2 center = float2(0.0, 0.0);
+</code></pre>
+
+$$\begin{aligned}
+&\text{Now define the center of the circle that's going to be where the circle would be position, }\\
+&\text{in this case the origin, so that means that our circle is position at: } \\
+\\
+&\mathcal{C} = (x, y) = (0, 0) \\
+\\
+&\mathcal{C}\; \xmapsto{\text{means}} \text{stands for the position of the circle }\\
+&\text{}\\
+\end{aligned}$$
+
+</div>
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+    float radius = 0.5;
+</code></pre>
+
+$$\large r \implies \text{radius}$$
+
+$$\begin{aligned}
+&\text{Now in order to continue with the theory of the circle lets define the radius, which in this case is also}\\
+&\text{the same as the max distance from the center of the circle, so every point with distance to the center }\\
+&\text{less than the radius would represent that is part of the circle.}\\
+\end{aligned}$$
+
+$$\textbf{The Geometric Constraint} \\$$
+$$d \leq r \implies \sqrt{(x - h)^2 + (y - k)^2} \leq r\\$$
+
+</div>
+
+<div style = "font-size: 21px">
+    
+$$\\[7ex]\\$$
+    
+$$\begin{aligned}
+&\text{some other way to specify in code the substractions inside the root as the following}\\
+\end{aligned}$$
+
+$$ float2\; coor2  = float2((x - h)\ ,\ (y - k))$$
+    
+<pre><code class="language-hlsl">
+    float2 coor2 = coor - center;
+</code></pre>
+        
+$$coor2\; =\; \mathbf{C_2}\ =\ \mathbf{P} - \mathbf{C}\ =\ \begin{pmatrix} x - h \\ y - k \end{pmatrix}$$
+$$\\[5ex]\\$$
+$$coor2\; =\;(x - h, y - k)\ =\ (x, y) - (h, k)$$
+$$\\[5ex]\\$$
+$$coor2\; =\;\mathbf{C_2}\ =\ \mathbf{P} - \mathbf{C} $$
+
+
+<pre><code class="language-hlsl">
+if(length(coor2) <= radius)
+{
+    col.x = 1.0;
+}
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{The operation that we are going to do now would be evaluate the points so they fulfill }\\
+&\text{the condition, and if the point fulfill then is when we are going to know that the point must }\\
+&\text{be colored, the condition in general mathematics terms is the next one:}\\
+\end{aligned}$$
+    
+$$d  \implies length(coor2) $$
+
+$$\\[4ex]\\$$
+
+$$\textbf{The Distance Formula} \\$$
+$$d = \sqrt{(x - h)^2 + (y - k)^2} \\$$
+
+$$\\[4ex]\\$$
+
+$$d \leq r \implies \sqrt{(x - h)^2 + (y - k)^2}\; \leq\; r\\$$
+
+$$\\[4ex]\\$$
+
+$$d \leq r \implies \sqrt{\mathbf{(C_2)^2}}\; \leq\; r \ =\ \sqrt{\mathbf{P^2} - \mathbf{C^2}}\; \leq\; r $$
+
+$$\\[4ex]\\$$
+
+$$\begin{aligned}
+&\text{So if the condition of the previous statement is meet then the output would be this colored red   }\\
+\end{aligned}$$
+
+
+<pre><code class="language-hlsl">
+    col = fixed4(col.x, 0.0 , 0.0, 1.0);
+
+    return col;                
+</code></pre>
+        
+</div>
+
+
+<br>
+<img  src="Img/CircleDraw.png"  style="display: block; margin: 0 auto; width: 60%;">
+<br>
+
+<hr>
+<h1 style="font-size: 30px;"><b> End </b></h1>
+<hr>
+
+    
+
+<!-- 
+_______  _        ______     _  _  _ 
+(  ____ \( (    /|(  __  \   ( )( )( )
+| (    \/|  \  ( || (  \  )  | || || |
+| (__    |   \ | || |   ) |  | || || |
+|  __)   | (\ \) || |   | |  | || || |
+| (      | | \   || |   ) |  (_)(_)(_)
+| (____/\| )  \  || (__/  )   _  _  _ 
+(_______/|/    )_)(______/   (_)(_)(_)
+
+-->
+
+
+<br>
+<br>
+
+</div>
+
+<a href="https://andreality1.github.io/Mathematics-Code_INDEX/">
+    <h1 style="font-size: 40px; color: #03B5BE; text-decoration: underline;">
+    <b>
+            Mathematics-Code_INDEX
+    </b>
+    </h1>
+</a>
+
+<br>
+<br>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+    </script>
+
+	
+        <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+        <!-- <script>window.jQuery </script> -->
+        <!-- <script src="script.js"></script> -->
+
+
+    </body>
+</html>
+

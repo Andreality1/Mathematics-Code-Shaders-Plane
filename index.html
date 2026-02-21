@@ -59,7 +59,7 @@ From Andraelity, how CODE using math.
     
     <div  class="articleRightInner">
 
-      <img width="400"  src="Img/ShadersImage.png" class="center">
+      <img width="400"  src="Img/BlueprintCode.png" class="center">
       <br>  
 <a target = "_blank" href="https://www.youtube.com/channel/UC-4AaN4M3Sq1lY6NVZnfaEw">Youtube/Andreality</a>
 </div>
@@ -113,7 +113,7 @@ with the step by step to achieve visual representations and overall systematic r
 
 
 
-<h2 style="font-size: 50px;" id ="CircleSDF"><strong>CircleSDF</strong></h2>
+<h2 style="font-size: 50px;" ><strong>Computer Shaders Graphics</strong></h2>
 <!-- <h1><b><a href="https://andraelity.github.io/WebPageVideoTest/" > https://andraelity.github.io/WebPageVideoTest/ </a></b></h1> -->
 <!-- <h1><b><a> Factorial Identification </a></b></h1> -->
 
@@ -132,157 +132,314 @@ _______ _________ _______  _______  _        _______  _______  ______   _______
 
 <hr>
 <hr>
-<h1 style="font-size: 40px;"><b> Shaders Circle SDF</b></h1>
+<h1 style="font-size: 40px;"id ="CircleSDF"><b> CircleSDF</b></h1>
 
 
 
 <div style = "font-size: 21px">
 
 
-    <pre><code class="language-hlsl">
+<pre><code class="language-hlsl">
 
-        CGPROGRAM
+    float2 uv =  i.uv ;
+    float4 col = float4(0,0,0,1);
+    float4 red = float4(1,0,0,1);
+    float4 white = float4(1,1,1,1);
+
+    float2 coordinateScale = (uv * 2.0)  - 1.0;
+
+    float2 coor = coordinateScale;
+
+    float radius = 0.5;
+
+    float number = length(coor) - radius;
+       
+    float smooth = 1.0 - smoothstep(0.0, 0.01, number );                
+
+    col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+    return col;
     
-        #pragma vertex vert alpha
-        #pragma fragment frag alpha
-    
-        #include "UnityCG.cginc"
-    
-        struct VertexInfo
-        {
-            float2 uv : TEXCOORD0;
-            float4 vertex : POSITION;
-        };
-    
-        struct PixelData
-        {
-            float2 uv : TEXCOORD0;
-            float4 vertex : SV_POSITION;
-        };
-    
-        sampler2D _MainTex;
-    
-        float4 _MainTex_ST;
-    
-        int _SetScreen ;
-            float _StepTime; // This receives the value from C#
-    
-            PixelData vert (VertexInfo v)
-        {
-            PixelData o;
-            o.vertex = UnityObjectToClipPos(v.vertex);
-            o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-            return o;
-        }
-    
-        fixed4 frag (PixelData i) : SV_Target
-        {
-            
-            // THIS CODE MEANS
-            // HOW TO RUN THE PIXELS OF THE SCREEN.
-            
-            float2 uv =  i.uv ;
-            
-            fixed4 colorWhite = float4(1,1,1,1); // Color white.
-            fixed4 colorBlack = float4(0,0,0,1); // Color Black.
-            
-            col = fixed4(uv.x, uv.y , 0.0, 1.0);
-            return col;
-        }
-    
-        ENDCG
+</code></pre>
+
+$$\begin{aligned}
+&\text{what we need to define right now is something that could allow us to to explain the difference between the previous theory}\\
+&\text{of circle drawing, once we had identify this elements once we identify how to create a relationship between distances and }\\
+&\text{identity properties is when we are going to be able to specify which procedures allow us to get information that we need }\\
+&\text{from the equations.}\\
+\end{aligned}$$
+
+</div>
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+    float2 uv =  i.uv ;
+    float4 col = float4(0,0,0,1);
+    float4 red = float4(1,0,0,1);
+    float4 white = float4(1,1,1,1);
+
+    float2 coordinateScale = (uv * 2.0)  - 1.0;
+
+    float2 coor = coordinateScale;
+
+    float radius = 0.5;
     
 </code></pre>
     
+$$\begin{aligned}
+&\text{Everything from this point on before is pretty straight forward all the information here is very well describe }\\
+&\text{and the operation on each pixel was very well describe. and the information was set, only we required to explain }\\
+&\text{is the steps ahead and how each operation allows us to define limits of identity, that we could use to create }\\
+&\text{information and details.}\\
+\end{aligned}$$
+
+</div>
+
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float number = length(coor) - radius;
+   
+float smooth = 1.0 - smoothstep(0.0, 0.01, number );                
+
+col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+return col;
+    
+</code></pre>
+    
+$$\begin{aligned}
+&\text{ This is going to be the set of functions that we need to clarify in order to make understanding of how this values}\\
+&\text{ are being represented, logically this representations. }\\
+\end{aligned}$$
+
+</div>
+
+<img src="Img/CircleDrawSmooth.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<hr>
+<div style = "font-size: 21px">
+$$SMOOTHSTEP$$
+</div>
+<br>
+<img src="Img/CircleBorderSmooth.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+
+<hr>
+<div style = "font-size: 21px">
+    $$NON \ SMOOTHSTEP$$
+</div>    
+<img src="Img/CircleBorderSimple.png"  style="display: block; margin: 0 auto; width: 30%;">
+<br>
+
+<br>
+
+
+<div style = "font-size: 21px">
+
+$$\\[5ex]$$
+    
+$$\begin{aligned}
+&\text{now that we already now the difference between one and the other we are going to explain how we }\\
+&\text{modify the pixels this way and how we are able to make this smooth blending between the pixels. }
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+float number = length(coor) - radius;
+</code></pre>
+
 
 $$\begin{aligned}
-&\text{he computer runs all the graphics interfaces through the chips, which is nothing else but a bunch of} \\
-&\text{organizers or sieves, that reorder the on's and off's from thousands and millions of switches, which only purpose} \\
-&\text{is to direct and redirect or sieve, the electric current, electricity, the power, the force through } \\
-&\text{to the desired path, so the idea here is not understand something so simple, this is basically changing a bulb} \\
-&\text{and turn on the switch to check if it turn up or not, the idea here is visualize what it is the best way} \\
-&\text{to change all the bulbs of an stadium capable to alocate 200.000 kThousands people, and not just change} \\
-&\text{the bulbs but also change the wired system that runs through all of them, all of a sudem changing one bulb  } \\
-&\text{seems like a really easy task.} \\
-\\[5pt]
-&\text{But why thinking this inmense and enormous, is necesary, I only need to plot a single sine function} \\
-&\text{i could do it by hand, if doing such thing is that difficult I would prefer to do that, is maybe} \\
-&\text{what you are thinking now, and yeah, you're in the freedom to do whatever you think is best, but if your} \\
-&\text{idea is to think about something really specific, and really punctual, which requires you to learn} \\
-&\text{about this particular type of things, about this specific and punctual ways to think, then yes, you got} \\
-&\text{to start thinking very inmense, so thinking little is a little bit more simple.} \\
-\\[5pt]
+&\text{We already know that the }\quad length(vector)\ \quad\text{is going to provide us with the magnitude of the vector. }\\
+&\text{so if we apply this to every single coordinate in the plane then we are going to be able to take a mathematical }\\
+&\text{representation or rather say a value that we could use to specify exactly which positions points fall into this category }\\
+&\text{the idea with this substractions is make all the points fall into a ratio, or rather say a radius. }\\
+\end{aligned}$$
 
-&\text{So now we begin, what are these sieves you'll be thinking, well, easy, sum this two numbers could be a sieve, } \\
-&\text{substract this two numbers, could be another sieve, make this number equal to this other number, is anoother one,} \\
-&\text{multiply, compare, divide, greater and less than, is another way to create ways to separate and filter information} \\
-&\text{verify trueness, which means if the thing is true or false, and when I say thing I mean  1 is equal to 1, if yes then } \\
-&\text{continue with the next things to do.}\\
-\\[5pt]
 
-&\text{so that`s basically computing in its purest form, thats all the computer does all the time, in many many many ways to }\\
-&\text{reorganize summations, comparations, multiplication, evaluation, and also one of the most important ones, }\\
-&\text{create new things, stablish new information, save information, or also save this number, save this information you are reading,}\\
-&\text{maybe it is useful in the future.}\\
-\\[5pt]
+$$\begin{aligned}
+&\\[1ex]\\
+&\text{The idea is to make the evaluation of this substraction to provide us a positive or negative value that we could use to}\\
+&\text{exemplify the information correctly.}\\
+\end{aligned}$$
 
-&\text{so that's basically doing computing, that's all a computer does, in many, maaanyyyy ways, different ways but }\\
-&\text{at the end the same thing, at the end the same same same thing, so if you now know what's really going on }\\
-&\text{how much of this things you could think of out a doing }\\
-&\text{1 trillions}\\
-&\text{1 quatrillions}\\
-&\text{1 quintilloins}\\
-&\text{1 or maybe you could just think that everything that is going around you, works like that}\\
-&\text{that everything that goes in your reality works like that, that everything is a summation}\\
-&\text{a substraction, a reorganization of data a store and load of information in very particular ways to make everything }\\                    
-&\text{looks different but the same, at the same time, so maybe is life a simulation maybe you are reading letters that }\\
-&\text{only appear in front of you when you are reading them, and everysingle time that you save something is only the illusion}\\
-&\text{that you image yourself really doing something.}\\
+</div>    
 
-&\text{so is a decaheptaoctasextaatrillion of things, doesnt sountd that big.}\\
-\\[5pt]
+<img src="Img/UnitaryCircleLines.png"  style="display: block; margin: 0 auto; width: 30%;">
+<br>
 
-&\text{so the idea behind computers or more specificly science, is that you could alter the things in reality}\\
-&\text{if the things are organized in a correct order, or fashion, something that you can think is basically a }\\
-&\text{representation of this amounts, this inmense number of operations}\\
-\\[5pt]
 
-&\text{so how much pixels are on a screen like 2 million ? yeah something like that right, 1920 * 1080}\\
-&\text{really small, dont you think, but how many transistors are on a chip, like 10 billion}\\
-&\text{but why 10 billion if I only got 2 million pixels, and that's where everything hides behind}\\
-&\text{how many screens are really running on your chip, on your computer, how many screens }\\
-&\text{are being sum at other things, compare, substracted, how many data on your screen can be presented}\\
-&\text{in other strings, in oder words, in other numbers, how many screens are on your computer, }\\
-&\text{or more clearer, how many screens can you handle, hey wait a minute I only use one screen what the hell }\\
-&\text{are you talking about. Simple, suppose that you are on a cafe internet, the old ones, where people used to sit}\\
-&\text{one next to the other, now if you follow this structure, could you simulate that expression on your screen}\\
-&\text{it is possible to create an simulation on your computer using math and code to create a cafe}\\
-&\text{internet, yes for sure, so if you can simulate computers in a computers, are you simmulating a computer}\\
-&\text{or just making use of your computer more extended.}\\
-\\[5pt]
+<div style = "font-size: 21px">
+        
+$$\begin{aligned}
+&\text{ If we take a random set of lines from the circle, and placed them horizontal one next to the other, and we also place the }\\
+&\text{ radius of the of the circle here on horizontal bars but rather colored green, so what we need to visualize here is that if }\\
+&\text{ we substract the green bar from each orange bar, we are going to end up with the next two tables.}
+\end{aligned}$$
 
-&\text{thats usually the most difficult idea to get on, that within your computer there are more computers, }\\
-&\text{that you could make use of, if you know how to work with them, so making use of this screens or computers }\\
-&\text{is what you need to understand, how to make use of computer more throughfully, how to use computers}\\
-&\text{to use more computers, like painting, or building houses, learn how to build houses today, so you could }\\
-&\text{build more houses tomorrow, or painting, paint something today so you could make more paints in the future}\\
-&\text{so imagine that within your computer there are hundres or thousands or millions of screens, that you could}\\
-&\text{could use to display things on.}\\
-\\[5pt]
+</div>    
 
-&\text{you could display mathematical plots, like we are going to do from this moment on, or }\\
-&\text{you could write words on it, or you could create pictures, or used to create diagrams}\\
-&\text{to edit videos, to edit images, to simulate environments, to 3D expand multiple screens so}\\
-&\text{you image yourself automatizing machines, design plans, chat or whichever you think is best}\\
-&\text{but yeah you got hundrds of screens on your computer available to extend, achieve, and reach your goals,}\\
-&\text{but overall try to accomplish what you choise.}\\
+<img src="Img/BarsLengthCircle.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+<br>
+
+<img src="Img/BarsLengthCircleSub.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+<br>
+
+<div style = "font-size: 21px">
+        
+$$\begin{aligned}
+&\text{ if we take into recognition all the red lines are going to represent the lines that are inside the circle, cuz the radius}\\
+&\text{ is greater than its magnitude, so that'll be the way how we could check each single coordinate as a vector, in order }\\
+&\text{ to recognize or identify if we need to paint it or not. In mathematical terms would be:}\\
+\end{aligned}$$
+
+
+$$ \|\mathbf{coor}\| - r \ = \  length(\mathbf{coor}) - r $$
+
+$$\\[4ex]\\$$
+
+$$C = \text{Coordinate in CIRCLE,} \quad \|\mathbf{coor}\| = \sqrt{x^2 + y^2}$$
+
+$$\\[4ex]\\$$
+
+$$C = \{ \mathbf{coor} \in \mathbb{R}^2 : \|\mathbf{coor}\| \leq r \}$$
+
+$$\\[4ex]\\$$
+
+$$\text{Radius: } r \in \mathbb{R}^+$$
+</div>    
+    
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+float smooth = 1.0 - smoothstep(0.0, 0.01, number);                
+</code></pre>
+
+$$\\[4ex]\\$$
+
+$$\text{smoothstep}(0.0, 0.01, number)$$
+
+$$\begin{aligned}
+&\text{with this line of code, the thing that we are doing is runnning over the edge of the circle is as if you were using a .}\\
+&\text{highlighter mark that goes through all the line that surrounds the circle }\\
+\end{aligned}$$
+
+$$\begin{aligned}
+    &\text{the reason why this thing works is cuz each time that we operate the substractions on the coordinates, we }\\
+&\text{are going to end with a number greater or lesser than 0, and if the result of this operations fall into }\\
+&\text{this gap }\ (0.0, 0.01) \ \text{its going to be the section of the circle that we are going to smooth the values from.}\\
+\end{aligned}$$
+
+$$\begin{aligned}
+&\text{but remember that the output from the smoothstep is always a number between 0 and 1, which means that the mapping}\\
+&\text{of the numbers that are less than 0 from the equation } magnitude - radius \text{ is going to be reduced to}\\
+&\text{to all values less than 0 all of them map to 0.}\\
+&\text{to all values between than 0 and 0.01 map to all values between 0 and 1 }\\
+&\text{to all values greater than 1 all of them amp to 1.}\\
+\end{aligned}$$
+
+</div>        
+
+
+<div style = "font-size: 21px">
+
+$$\\[5ex]$$
+
+$$f(x) = \begin{cases} 0 & \text{if } x \le 0 \\ \frac{x}{0.01} & \text{if } 0 < x < 0.01 \\ 1 & \text{if } x \ge 0.01 \end{cases}$$
+
+$$x = \|\mathbf{coor}\| - r \quad \text{:This represents our "magnitude - radius" value.}$$
+
+$$x \le 0 \mapsto 0 \quad \text{:Handles all values less than or equal to 0 mapping to 0.}$$
+
+$$0 < x < 0.01 \mapsto [0, 1] \quad \text{:Represents the transition zone.  }$$
+
+$$[0, 0.01]\ to\ [0, 1]\ \text{the expression}\ \frac{x}{0.01}\ (or\ 100x) \quad \text{:scales that tiny interval to the full unit range.}$$
+
+$$x \ge 0.01 \mapsto 1 \quad \text{:Clamps all values greater than the threshold to 1.}$$
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{The full idea would be if:}\\
+&\text{if the output of the smoothfunction is less than 0 then color using red }\\
+&\text{if the output of the smoothfunction is more than 1 then color using black }\\
+&\text{and if the output of the smoothfunction is between 0 and 1 then color using blend mixtures of red and black proportioned}\\
+\end{aligned}$$
+
+
+</div>        
+
+<br>
+
+<img src="Img/ColorBlendRedBlack.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<br>
+
+<img src="Img/CircleColorsInverted.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+float smooth = smoothstep(0.0, 0.01, number);                
+
+col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+return col;
+</code></pre>
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{if we put the function output of this reasoning as the color to paint in the output of the shader, remember}\\
+&\text{the output is going to be a value between 0 and 1, and colors in shaders could be represented as a combination of}\\
+&\text{values RGB from 0 to 1 each one, in this case.}\\
+&\text{So if we put this output as the color we are going to get the colors inverted}\\
+&\text{The reason is cuz section of the circle would be presented as 0 values, and the sections outside the circle would be}\\
+&\text{presented as 1 values, and the values in between 1 and 0 a blend between black and red.}\\
+\end{aligned}$$
+
+$$\begin{aligned}
+
+&\text{now the questions is going to be how we could inverse the colors, well thats is just simply by doing a  }\\
+&\text{substractions to all the points to a 1}\\
+&\text{this would give the inverse mapping of the smoothstep. }\\
 
 \end{aligned}$$
 
 </div>
-<br>
-<br>
 
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+float smooth = 1 - smoothstep(0.0, 0.01, number);                
+
+col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+return col;
+</code></pre>
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{if we take, 1 and substract the smoothfunction from it, we are going to get the values from the smoothfunction}\\
+&\text{as if this function was the reflected and horizontal translated 1 unit smoothfunction. }\\
+&\text{or you could also say the inverse or the completion of the unit operation.}\\
+\end{aligned}$$
+        
+        
+</div>        
+
+<img src="Img/SmoothfunctionReflect.png"  style="display: block; margin: 0 auto; width: 50%;">
 
 
 <hr>

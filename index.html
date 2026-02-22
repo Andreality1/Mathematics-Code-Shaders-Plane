@@ -143,24 +143,24 @@ _______ _________ _______  _______  _        _______  _______  ______   _______
 
 <pre><code class="language-hlsl">
 
-    float2 uv =  i.uv ;
-    float4 col = float4(0,0,0,1);
-    float4 red = float4(1,0,0,1);
-    float4 white = float4(1,1,1,1);
+float2 uv =  i.uv ;
+float4 col = float4(0,0,0,1);
+float4 red = float4(1,0,0,1);
+float4 white = float4(1,1,1,1);
 
-    float2 coordinateScale = (uv * 2.0)  - 1.0;
+float2 coordinateScale = (uv * 2.0)  - 1.0;
 
-    float2 coor = coordinateScale;
+float2 coor = coordinateScale;
 
-    float radius = 0.5;
+float radius = 0.5;
 
-    float number = length(coor) - radius;
-       
-    float smooth = 1.0 - smoothstep(0.0, 0.01, number );                
+float number = length(coor) - radius;
 
-    col = fixed4(smooth, 0.0, 0.0, 1.0);
+float smooth = 1.0 - smoothstep(0.0, 0.01, number );                
 
-    return col;
+col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+return col;
     
 </code></pre>
 
@@ -177,16 +177,16 @@ $$\begin{aligned}
 
 <pre><code class="language-hlsl">
 
-    float2 uv =  i.uv ;
-    float4 col = float4(0,0,0,1);
-    float4 red = float4(1,0,0,1);
-    float4 white = float4(1,1,1,1);
+float2 uv =  i.uv ;
+float4 col = float4(0,0,0,1);
+float4 red = float4(1,0,0,1);
+float4 white = float4(1,1,1,1);
 
-    float2 coordinateScale = (uv * 2.0)  - 1.0;
+float2 coordinateScale = (uv * 2.0)  - 1.0;
 
-    float2 coor = coordinateScale;
+float2 coor = coordinateScale;
 
-    float radius = 0.5;
+float radius = 0.5;
     
 </code></pre>
     
@@ -356,13 +356,23 @@ $$\\[5ex]$$
 
 $$f(x) = \begin{cases} 0 & \text{if } x \le 0 \\ \frac{x}{0.01} & \text{if } 0 < x < 0.01 \\ 1 & \text{if } x \ge 0.01 \end{cases}$$
 
+$$\\[4ex]$$
+
 $$x = \|\mathbf{coor}\| - r \quad \text{:This represents our "magnitude - radius" value.}$$
+
+$$\\[4ex]$$
 
 $$x \le 0 \mapsto 0 \quad \text{:Handles all values less than or equal to 0 mapping to 0.}$$
 
+$$\\[4ex]$$
+
 $$0 < x < 0.01 \mapsto [0, 1] \quad \text{:Represents the transition zone.  }$$
 
+$$\\[4ex]$$
+
 $$[0, 0.01]\ to\ [0, 1]\ \text{the expression}\ \frac{x}{0.01}\ (or\ 100x) \quad \text{:scales that tiny interval to the full unit range.}$$
+
+$$\\[4ex]$$
 
 $$x \ge 0.01 \mapsto 1 \quad \text{:Clamps all values greater than the threshold to 1.}$$
 
@@ -377,6 +387,8 @@ $$\begin{aligned}
 
 
 </div>        
+<img src="Img/PositiveAndNegative.png"  style="display: block; margin: 0 auto; width: 30%;">
+
 
 <br>
 
@@ -430,20 +442,108 @@ col = fixed4(smooth, 0.0, 0.0, 1.0);
 return col;
 </code></pre>
 
+<img src="Img/CircleDrawSmooth.png"  style="display: block; margin: 0 auto; width: 50%;">
+
 $$\\[5ex]$$
 
 $$\begin{aligned}
-&\text{if we take, 1 and substract the smoothfunction from it, we are going to get the values from the smoothfunction}\\
-&\text{as if this function was the reflected and horizontal translated 1 unit smoothfunction. }\\
-&\text{or you could also say the inverse or the completion of the unit operation.}\\
+&\text{if we take, 1 unit and substract the smoothfunction from it, we are going to get the values from the smoothfunction}\\
+&\bullet\textbf{ inverse of the unit number}\ or\ \bullet\textbf{the reflect of the unit number.}\\
+&\\[1ex]
+
+&\text{or you could also obtain this values if the smoothfunction function was reflected and horizontal translated}\\
+&\text{ 1 unit to the right. }\\
 \end{aligned}$$
         
         
 </div>        
 
-<img src="Img/SmoothfunctionReflect.png"  style="display: block; margin: 0 auto; width: 50%;">
+<img src="Img/SmoothfunctionReflectFull.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float smoothstepREFLECT(float a, float b, float x)
+{
+    float check = (x - a )/(b - a );
+    float check2 = max(0, min(1,check));
+    check2 = check2 - 1;
+    
+    float result = 3.0 * check2 * check2 + 2.0 * check2 * check2 * check2;
+    
+    float putOut = result;
+    return putOut;
+}
+
+float smooth = smoothstepREFLECT(0.0, 0.01, number);                
+
+col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+return col;
+
+</code></pre>
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{If we use this functions we are going to end up with the same output.}\\
+\end{aligned}$$
+
+</div>        
+<img src="Img/NegativeAndPositive.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<img src="Img/CircleDrawSmooth.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<div style = "font-size: 21px">
+    
+$$\begin{aligned}
+&\text{There is a third way how to get the same output, by reordering the same properties we're ben using since }\\
+&\text{the beginning, we need to understand that the general idea here is to create sections where the evaluation }\\
+&\text{gives a negative sign and a positive sign depending if we are inside or outside of the circle}\\
+\end{aligned}$$
+    
+</div>        
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+        
+float number = radius - length(coor);
+   
+float smooth = smoothstep(0.0, 0.01, number);                
+
+col = fixed4(smooth, 0.0, 0.0, 1.0);
+
+return col;
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{So if we switch the radius to always be positive we could change the type of evaluation that we are taking}\\
+&\text{and we are going to evaluate the distances always as negative if they are greater than the radius and the }\\
+&\text{inside of the circle always positive.}\\
+&\text{with this reorganization we could save instructions but at cost of complexity in understanding.}\\
+\end{aligned}$$
+
+</div>
+
+<img src="Img/NegativeAndPositive.png"  style="display: block; margin: 0 auto; width: 30%;">
+
+<img src="Img/CircleDrawSmooth.png"  style="display: block; margin: 0 auto; width: 50%;">
 
 
+
+
+
+
+
+
+
+
+
+
+<hr>
 <hr>
 <div style = "font-size: 21px">
         $$\LARGE\text {Shaders}$$

@@ -535,72 +535,407 @@ $$\begin{aligned}
 
 
 
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_0.shader">
+Shader_CircleSDF_0.shader 
+</a>
 
-
-<a style="color: blue; font-size: 36px; font-weight: bold;"href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_0.shader">Shader_CircleSDF_0.shader </a>
 <br>
-<a style="color: blue; font-size: 36px; font-weight: bold;"href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_1.shader">Shader_CircleSDF_1.shader </a>
+
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_1.shader">
+Shader_CircleSDF_1.shader 
+</a>
+
 <br>
-<a style="color: blue; font-size: 36px; font-weight: bold;"href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_2.shader">Shader_CircleSDF_2.shader </a>
 
-
-
-
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_2.shader">
+Shader_CircleSDF_2.shader 
+</a>
 
 
 <hr>
 <hr>
 <div style = "font-size: 21px">
-        $$\LARGE\text {Shaders}$$
+        $$\LARGE\text {Grid Shader}$$
 </div>        
 <hr>
 
-<div style = "font-size: 21px">
-<br>
 
-$$\begin{aligned}
-&\bullet \text{Read from memory:} && [STACK] \to \text{DATA} \\
-&\bullet \text{Write to memory:} && \text{DATA} \to [STACK] \\
-&\bullet \text{Add:} && a + b  \to \text{DATA} + \text{DATA}\\
-&\bullet \text{Subtract:} && a - b \to \text{DATA} - \text{DATA}\\
-&\bullet \text{Branch on Zero/False:} && \text{if } Z = 0 \to \text{DATA} = 0\\
-&\bullet \text{Branch on One/Positive:} && \text{if } Z = 1 \to \text{DATA} = 1
-\end{aligned}$$
+<div style = "font-size: 21px">
 
 $$\\[5ex]$$
 
 $$\begin{aligned}
-&\text{The previous instructions define what a computer is, and what can you do to make a computer work}\\
-&\text{}\\
+&\text{The next things that we are going to draw is going to be a grid, we already got the idea on how to use }\\
+&\text{distances to create areas or sections that would be painted or colored,  so lets define what really }\\
+&\text{is a grid mathematically speaking of course. }\\
+\end{aligned}$$
 
-&\text{So if we understand now that every computer chip today, got thousands and thousands of computers, inside the }\\
-&\text{the question, start to turns into what can you do to change this computers to do what you want to do}\\
-&\text{now I got for you a question, can you link a computer to a pixel ?, can you place a single computer }\\
-&\text{inside your pixel, can you place a computer inside 2 million pixels, the answer is yes but no,}\\
-&\text{its is possible yes, it is currently working like that no, so what is really happening is that each pixel}\\
-&\text{is link through a space in your computer chip that sends the information to the screen, once is all updated,}\\
-&\text{but before the screen is updated there is a single computer with the rules that we specify above dedicated to}\\
-&\text{each pixel.}\\
-&\text{So why instead not only one computer to all the pixels?, well thats a nice question, and the answers is }\\
-&\text{yes, that's how everything use to work in the past, when computers started, the main way how they used to }\\
-&\text{handle the operation, was like that, but at time past, and everything start to get tighter and tighter then}\\
-&\text{we start to notice; hey, you know what I can do the same thing I am doing with 1 single computer with 2 milloin }\\
-&\text{of them, and even faster.}\\
-&\text{The reason why is faster, is cuz compare things is slower than to make calculations, calculations is fast really}\\
-&\text{fast!!, like super, super, fast. }\\
-&\text{So, now you know got the idea of what we are going to do, we are going to perform calculation on multiple }\\
-&\text{computers, at the same time, to graph, or plot things on the screen, thats the main goal, and the reason how, }\\
-&\text{is cuz doing that thing is extremelly fast.}\\
+</div>
+
+
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float2 uv =  i.uv ;
+float4 col = float4(0,0,0,1);
+float4 red = float4(1,0,0,1);
+float4 white = float4(1,1,1,1);
+
+float2 coordinateScale = (uv * 2.0)  - 1.0;
+
+float PI = acos(-1.0);
+
+float2 coor =  coordinateScale * PI * 2.0 * 5.0 ;
+
+float Coord0 = cos(coor.x);
+float Coord1 = cos(coor.y);
+
+// the grid in itself
+float value =  smoothstep(0.98, 1.0, max(Coord0,Coord1));
+
+float smooth = 0.0 + value;
+
+col = fixed4(smooth, smooth, smooth, 1.0);
+
+return col;
+
+</code></pre>
+
+</div>
+
+<div style = "font-size: 21px">
+    
+$$\begin{aligned}
+&\text{Lets explain line by line how this things really works which are the things that we need to clarify in order.  }\\
+&\text{to make this idea completely clarify the actions that could make this things be correctly ordered.  }\\
+&\text{The first thing that we need to clarify is going to be something that we had already see  }\\
+
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+float2 uv =  i.uv ;
+float4 col = float4(0,0,0,1);
+float4 red = float4(1,0,0,1);
+float4 white = float4(1,1,1,1);
+
+float2 coordinateScale = (uv * 2.0)  - 1.0;
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{everything till this point everything has been specify and clarify the ideas that we're been handling were clarified}\\
+&\text{since the beginning of this pages, everything is clear here. right?}\\
+\end{aligned}$$
+
+</div>
+
+
+<div style = "font-size: 21px">
+    
+$$\begin{aligned}
+&\text{So lets explain the things that we could detail in the next lines on, which are the things that we need to clarify }\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+float PI = acos(-1.0);
+
+float2 coor =  coordinateScale PI * 2.0 * 5.0 ;
+
+
+float Coord0 = cos(coor.x);
+float Coord1 = cos(coor.y);
+
+// the grid in itself
+float value =  smoothstep(0.98, 1.0, max(Coord0,Coord1));
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{which are the things that we could understand from the first line on}\\
+\end{aligned}$$
+
+</div>
+
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float PI = acos(-1.0);
+
+float2 coor =  2 * PI * 5.0 * coordinateScale;
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{what is really happening in here, which are the things that we are trying to clarify here, which are the concepts that}\\
+&\text{we need to exemplify in this particular field in order to completely validate its functions.}\\
+&\text{lets explain the } arcosine(-1.0) \ \text{function and how its works} \\
+\end{aligned}$$
+
+</div>
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{we need to exemplify in this particular field in order to completely validate its functions.}\\
+&\text{lets explain the } arcosine(-1.0) \ \text{function and how it works} \\
+\end{aligned}$$
+
+$$\LARGE y = \arccos(x)$$
+
+</div>
+
+<img  src="Img/ArcosPlot.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{what we are trying to do here with the arcosine function is to get the PI number, is just that, how to get the PI number}\\
+&\text{and as you know if you put the PI number in the cosine function\_\_ } cos(\pi)\ \text{ \_\_then we are going to get }\ -1\\
+&\text{and as we all know the } arcos(y) \text{ function is the inverse of the } cos(x) \text{ where } y = cos(x) \ \text{and}  \\
+&\text{the output from the } arcos(y) = \pi \\
+&\text{Basically the function allow us to get } \pi \\
+\end{aligned}$$
+
+$$ cos(\pi) = -1$$
+$$ arcos(y) = \pi$$
+$$ y = cos(\pi) = -1 $$
+$$ arcos(cos(\pi)) = \pi$$
+    
+</div>
+    
+<br>
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float2 coor =  coordinateScale * PI * 2.0 * 5.0 ;
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{Now lets make use of pi, the idea here is to understand how we can scale this dimension in such way that}\\
+&\text{we could keep making modification in the space where things work in units and tens and cents, something that }\\
+&\text{we could use to reorder things over the space in the way we want, something that allow us to move things over }\\
+&\text{the space how we want it, in the same unit system. }\\
+\end{aligned}$$
+
+</div>
+        
+
+<img  src="Img/SpaceMultiplication.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+        
+<div style = "font-size: 21px">
+        
+$$\begin{aligned}
+&\text{The things that we are really doing right now is something that is like multipliying but not multiplying}\\
+&\text{am I being clear?, like is rather than a physical property more something of a value representation or reformation . }\\
+&\text{of something, for example what happens when you multiply a something by 2, the general idea is that you are going to  }\\
+&\text{get two somethings, and if you multiply a something for 3 then you are going to get 3 somethings. and so on and on... }\\
+\end{aligned}$$
+
+
+$$\begin{aligned}
+&\text{here what we are doing is multipliying everyting by something, what happens when you multiply everything by something?}\\
+&\text{what happens when you get everything and then multiply the everyting by something?, those are the questions that really }\\
+&\text{trigger the unknow, the moment when you start thinking about what it would be like scaling things or everything }\\
+&\text{by a ratio of something.  }\\
+\end{aligned}$$
+        
+
+$$\begin{aligned}
+&\text{The idea is going to be made the spaces to switch from one scale to the other at the same time we keep the }\\
+&\text{distances as they were.}\\
+\end{aligned}$$
+</div>
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float2 coor =  coordinateScale * PI * 2 * 5.0;z
+                        
+</code></pre>
+        
+$$\begin{aligned}
+&\text{Could be more easy to visualize it in this way, by detailing what steps we are following on the code, in words it says:}\\
+&\text{For a space made of units, make the units measure one PI, then add two PI inside each PI unit, and then make each 5  }\\
+&\text{PI units to measure a unit of a unit of the standard unit, the unit that we define from the beginnings of the units,}\\
+&\text{the idea of a unit.}\\
+\end{aligned}$$
+
+$$\begin{aligned}
+&\text{The thing that we need to clarify now is how we are able to shrink thinks into less space, which is the best way to make }\\
+&\text{comprehension of this elements, what I think is the best way to understand this is imagine the scale as a way to get things }\\
+&\text{further or closer, which are the things that are closer and which things are nearer, imagine this as a camera that is }\\
+&\text{getting closer or farther, placed at a distance looking at a plane with thins on it, then the other camera is set }\\
+&\text{up to a completely different distance looking at a different plane but at the end, both cameras images are placed one over }\\
+&\text{the other, and the distances from the camera to the plane are so well positioned in so very precise distances that the }\\
+&\text{image that they output by overposition one over the other looks as if both were drawed under the same distance space. }\\
+\end{aligned}$$
+
+</div>
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{now you could be wondering why we are using the number}\ \pi \text{ , the reason came from the next lines of code. }\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+float Coord0 = cos(coor.x);
+float Coord1 = cos(coor.y);
+
+</code></pre>
+
+</div>
+
+<img  src="Img/Cos2PI.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\\[5ex]
+&\text{the thing here with the cosine function is that we are going to get 1 every}\ 2 * \pi \ \text{, which means that every each}\\
+&\ 2 * \pi \ \text{we could make a line of our desired width just by extending how much distance from the 1 we want the borders to be}\\
+&\text{ borders to be}\\
+
+\end{aligned}$$
+
+$$ cos(2pi * L) = 1 , \quad where \quad L \implies \mathbb{Z} \implies INTEGER\; NUMBER $$ 
+$$\\[5ex]\\$$
+
+</div>
+
+<img src="Img/Cos2PiHorizontal.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{ The VERTICAL LINES are for the,} \quad cos(x)\\
+&\text{ The HORIZONTAL LINES are for the,} \quad cos(y)\\
+\end{aligned}$$
+        
+</div>
+
+<img src="Img/Cos2PIBOTH.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{now the way how we are able to understand that, is by evaluating each single of this pixels with the coordinates  }\\
+&\text{specified on the fragment shader, once we had evaluate the coordinates with the cos functions is when we  }\\
+&\text{are going to be able to make use of the smoothstep function to create the bounds of which colors should be  }\\
+&\text{colored, by setting up the bounds where we want this things to be colored and where we dont want to be colored }\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+float value =  smoothstep(0.98, 1.0, max(Coord0,Coord1));
+
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{The idea now is to set up the bounds in a way that allow us to create a representation that we could make off.}\\
+\end{aligned}$$
+
+$$\begin{aligned}
+&\text{so the idea here with the smoothstep function is make the greatest number between Coord0, and Coord1}\\
+&\text{verify if its over the range specified, so if the number is over the range specified, then paint the pixel}\\
+&\text{if not dont paint.}\\
+\end{aligned}$$
+
+</div>
+
+<hr>
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float value =  smoothstep(0.98, 1.0, max(Coord0,Coord1));
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{this would be the output if we set the bound to } [0.98 \: ,\: 1.0]\\
 &\text{}\\
 \end{aligned}$$
 
 </div>
 
-<img  src="Img/ParallelComputingOrder.png"  style="display: block; margin: 0 auto; width: 30%;">
+<img src="Img/0.98_1.00.png"  style="display: block; margin: 0 auto; width: 50%;">
 
-
+<hr>
 
 <div style = "font-size: 21px">
+    
+<pre><code class="language-hlsl">
+
+float value =  smoothstep(0.70, 0.71, max(Coord0,Coord1));
+
+</code></pre>
+    
+$$\begin{aligned}
+&\text{this would be the output if we set the bound to } [0.70\: ,\: 0.71]\\
+\end{aligned}$$
+    
+</div>
+
+<img src="Img/0.70_0.71.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<hr>
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float value =  smoothstep(0.00, 0.01, max(Coord0,Coord1));
+
+</code></pre>
+    
+$$\begin{aligned}
+&\text{this would be the output if we set the bound to } [0.00\: ,\: 0.01]\\
+\end{aligned}$$
+
+</div>
+
+<img src="Img/0.00_0.01.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<hr>
+
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float value =  smoothstep(-0.91, -0.90, max(Coord0,Coord1));
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{this would be the output if we set the bound to } [-0.91\: ,\: -0.90]\\
+\end{aligned}$$
+
+</div>
+
+<img src="Img/-0.91_-0.90.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+<hr>
+
+
 
 <!-- &\text{computers, at the same time, to graph, or plot things on the screen, thats the main goal, and the reason how, }\\ -->
 

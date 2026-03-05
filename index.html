@@ -550,15 +550,330 @@ Shader_CircleSDF_1.shader
 <a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_CircleSDF_2.shader">
 Shader_CircleSDF_2.shader 
 </a>
+                                                                                                            
+
+
+
+<!-- 
+_______          _________ _______  _       _________ _        _______  _______ 
+(  ___  )|\     /|\__   __/(  ____ \( \      \__   __/( (    /|(  ____ \(  ____ \
+| (   ) |( \   / )   ) (   | (    \/| (         ) (   |  \  ( || (    \/| (    \/
+| (___) | \ (_) /    | |   | (_____ | |         | |   |   \ | || (__    | (_____ 
+|  ___  |  ) _ (     | |   (_____  )| |         | |   | (\ \) ||  __)   (_____  )
+| (   ) | / ( ) \    | |         ) || |         | |   | | \   || (            ) |
+| )   ( |( /   \ )___) (___/\____) || (____/\___) (___| )  \  || (____/\/\____) |
+|/     \||/     \|\_______/\_______)(_______/\_______/|/    )_)(_______/\_______)
+-->
 
 
 <hr>
+<hr>
+<div style = "font-size: 21px">
+    $$\LARGE\text {Axis Lines}$$
+</div>        
+
+<div style = "font-size: 21px">
+    
+<img src="Img/AxisLines.png"  style="display: block; margin: 0 auto; width: 50%;">
+    
+<pre><code class="language-hlsl">
+
+
+float2 uv =  i.uv ;
+float4 col = float4(0,0,0,1);
+float4 red = float4(1,0,0,1);
+float4 white = float4(1,1,1,1);
+
+float2 toOneUV = uv;
+
+float2 coordinateScale = (uv * 2.0)  - 1.0;
+
+float2 coor = coordinateScale ;
+
+float AxisThickness = 0.01;
+
+float xAxis =  smoothstep(AxisThickness, 0.00, abs(coor.y));
+float yAxis =  smoothstep(AxisThickness, 0.00, abs(coor.x));
+float axisMask = ceil(xAxis + yAxis);
+
+float smooth = axisMask;
+
+col = fixed4(smooth, smooth, smooth, 1.0);
+
+return col;
+
+
+</code></pre>
+
+$$\\[5ex]$$
+
+$$\begin{aligned}
+&\text{Now that we got a general idea about what is like to paint things, we could beging thinking on how to use }\\
+&\text{this concepts to start making new shapes, and new figures that we could use to understand more things in the }\\
+&\text{the future. }\\
+\end{aligned}$$
+
+</div>
+        
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{lets start by painting the axis lines that define the X and X coordinate system. }\\
+&\text{The first question that we got to ask here, is how exactly we could make this lines without making it two rectangles}\\
+&\text{overpositioned one over the other.}\\
+&\text{lets ask ourself this question, is there a way to get this information the same way on the idea of how we paint the}\\
+&\text{circle, and the ideas that take us to drawing the same.}\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+float AxisThickness = 0.01;
+
+float xAxis =  smoothstep(AxisThickness, 0.00, abs(coor.y));
+float yAxis =  smoothstep(AxisThickness, 0.00, abs(coor.x));
+float axisMask = ceil(xAxis + yAxis);
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{all the idea behind this concept lies within this 4 lines, we could draw both of the lines just by making use of this}\\
+&\text{4 lines, lest understand how exactly we could make this happen, in such simplicity.}\\
+\end{aligned}$$
+
+<pre><code class="language-hlsl">
+
+float AxisThickness = 0.01;
+
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{this lines is the thickness of the axis lines, this value assignation is pretty simple, its just the idea of what}\\
+&\text{this thing is going to help us with, that matter.}\\
+\end{aligned}$$
+
+</div>
+
+        
+<div style = "font-size: 21px">
+
+<pre><code class="language-hlsl">
+
+float xAxis =  smoothstep(AxisThickness, 0.00, abs(coor.y));
+float yAxis =  smoothstep(AxisThickness, 0.00, abs(coor.x));
+
+</code></pre>
+
+$$\begin{aligned}
+&\text{Lets explain what this two lines are doing, the first line is taking the smoothstep an absolute value inside a bound }\\
+&\text{made of the thickness size of the axis lines, and 0 size. }\\
+&\text{so lets start from the insides to the outsides, lets explain what the abs() function is doing here. }\\
+&\text{as we are going to see in more shaders in the future, the abs functions here, is making all the points from that are in}\\
+&\text{the space and making them all positive, which means that every single operations that we do on this points; that were modified}\\
+&\text{to be positive; would still paint in the same coordinate position on the screen plane, but its properties inside  }\\
+&\text{the computational space are different, same position on screen, but different properties and values inside the computer}\\
+&\text{space.}\\
+\end{aligned}$$
+
+</div>
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\LARGE\text{The values of the coordinate  } (x,y) \implies (-1.5,\ 1.5)\\
+\end{aligned}$$
+
+</div>
+        
+<img src="Img/SpaceToSpace.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\LARGE\text{The values of the coordinate  } f(x,y) \implies abs(x,y) \implies abs(-1.5,\ 1.5) \\
+\end{aligned}$$
+
+$$\LARGE f(x,y) = abs(-1.5,\ 1.5) = (1.5,\ 1.5)\\$$
+
+</div>
+
+<img src="Img/SpaceToSpace2.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+<div style = "font-size: 21px">
+    
+$$\begin{aligned}
+&\text{The values of the coordinate in the computer space are going to change according to the position on the cuadrant they are}\\
+&\text{Every point is going to be evaluated as if they were both on the positive cuadrant.}\\
+\end{aligned}$$
+    
+    
+$$\begin{aligned}
+&\text{So if both of the points were projected into the positive cuadrant which is going to be operation that we are }\\
+&\text{are going to perform with the smoothstep function}\\
+\end{aligned}$$
+    
+<pre><code class="language-hlsl">
+
+float xAxis =  smoothstep(0.01, 0.00, abs(coor.y));
+float yAxis =  smoothstep(0.01, 0.00, abs(coor.x));
+
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{Make notice that the first parameters in the smoothstep function is greater than the second parameters, but what is the }\\
+&\text{difference between making the first parameter greater than the second one.}\\
+&\text{what is the main idea behind making one parameter greater than the second. which are the only two options that we could }\\
+&\text{make action in this specific function.}\\
+\end{aligned}$$
+
+</div>
+
+
+
+<div style = "font-size: 21px">
+    
+$$\begin{aligned}
+&\text{The idea here is to visualize how this code works in the representations of the numbers, in the real numbers space of values }\\
+\end{aligned}$$
+    
+<pre><code class="language-hlsl">
+        
+float xAxis =  smoothstep(0.01, 0.00, abs(coor.y));
+float yAxis =  smoothstep(0.01, 0.00, abs(coor.x));
+        
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{A way to clarify this information is going to be by setting the information in a line where the actions depends from which side }\\
+&\text{the smoothstep came from. }\\
+&\text{if the smoothstep values are a < b , then the evaluation of x is going to get greater if x increment}\\
+&\text{but if the smoothstep values are a > b , then the evaluation of x is going to get greater if x decrease}\\
+\end{aligned}$$
+$$\\[5ex]\\$$
+
+$$t = \frac{x - a}{b - a}$$
+
+$$\\[10ex]\\$$
+$$\LARGE\text{CASE }\#1$$
+$$\\[5ex]\\$$
+$$edge0 = a = 2 $$
+$$edge1 = b = 5 $$
+$$\\[5ex]\\$$
+$$t = \frac{x - \text{edge0}}{\text{edge1} - \text{edge0}}$$
+$$\\[5ex]\\$$
+$$t = \frac{x - 2}{5 - 2} \implies a < b \implies 2 < 5$$ 
+$$\\[5ex]\\$$
+
+$$\\[10ex]\\$$
+$$\LARGE\text{CASE }\#2$$
+$$\\[5ex]\\$$
+$$edge1 = a = 5 $$
+$$edge0 = b = 2 $$
+$$\\[5ex]\\$$
+$$t = \frac{x - \text{edge1}}{\text{edge0} - \text{edge1}}$$
+$$\\[5ex]\\$$
+$$t = \frac{x - 5}{2 - 5} \implies a > b \implies 5 > 2$$ 
+$$\\[5ex]\\$$
+
+<pre><code class="language-hlsl">
+        
+float value =  smoothstep(a, b, x);
+                
+</code></pre>
+    
+</div>    
+
+<img src="Img/CombineSmoothStep.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+<br>
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{the thing with this function is that we could get exactly the same behavior of the reflected smoothstep, just by changing }\\
+&\text{order of the values, we could get exactly the oposite representation of the smoothstep function just by making the }\\
+&\text{greatest values first.}\\
+\end{aligned}$$
+
+</div>
+
+<img src="Img/SmoothStepBoth.png"  style="display: block; margin: 0 auto; width: 70%;">
+<img src="Img/SmoothfunctionReflectFull.png"  style="display: block; margin: 0 auto; width: 70%;">
+
+
+
+
+<div style = "font-size: 21px">
+
+$$\begin{aligned}
+&\text{The reason why we were explaining all this ideas is cuz the main concepts of this type of ideas besides on how we could}\\
+&\text{make this information to be related with the entire concept.}\\
+\end{aligned}$$
+        
+<pre><code class="language-hlsl">
+
+float xAxis =  smoothstep(AxisThickness, 0.00, abs(coor.y));
+float yAxis =  smoothstep(AxisThickness, 0.00, abs(coor.x));
+        
+</code></pre>
+
+$$\begin{aligned}
+&\text{the idea behind is that all the points are going to be stablish between the the positive cuadrant of the cartesian plane}\\
+&\text{and once the point are there we are going to define a bound, from 0.00 to AxisThickness, but cuz the bounds are set up}\\
+&\text{inverted, then the values are going to be 0 for numbers higher than the AxisThickness, and 1 for values under 0.00}\\
+&\text{but cuz there is not going to be a value under 0, cuz every point is positive then we are going to get only values }\\
+&\text{greater than 0.00, between points where their coordinates (x or y) are between 0.00 and AxisThickness}\\
+\end{aligned}$$
+
+</div>
+
+<div style = "font-size: 21px">
+        
+<pre><code class="language-hlsl">
+
+float axisMask = ceil(xAxis + yAxis);
+
+</code></pre>
+
+
+$$\begin{aligned}
+&\text{And cuz the values that we are going to get over 0.00 are going to also be values less than 1 or equal to 1, then if we}\\
+&\text{implement the ceil function then we are going to end up getting, all the values between 0 to 1, are going to be all 1}\\
+&\text{and thats the reason why we get the sharp edges}\\
+\end{aligned}$$
+
+</div>
+
+<img src="Img/AxisLines.png"  style="display: block; margin: 0 auto; width: 50%;">
+
+
+
+<!-- 
+_______  _______ _________ ______     _       _________ _        _______  _______ 
+(  ____ \(  ____ )\__   __/(  __  \   ( \      \__   __/( (    /|(  ____ \(  ____ \
+| (    \/| (    )|   ) (   | (  \  )  | (         ) (   |  \  ( || (    \/| (    \/
+| |      | (____)|   | |   | |   ) |  | |         | |   |   \ | || (__    | (_____ 
+| | ____ |     __)   | |   | |   | |  | |         | |   | (\ \) ||  __)   (_____  )
+| | \_  )| (\ (      | |   | |   ) |  | |         | |   | | \   || (            ) |
+| (___) || ) \ \_____) (___| (__/  )  | (____/\___) (___| )  \  || (____/\/\____) |
+(_______)|/   \__/\_______/(______/   (_______/\_______/|/    )_)(_______/\_______)
+-->
+
+
+
+
 <hr>
 <div style = "font-size: 21px">
         $$\LARGE\text {Grid Shader}$$
 </div>        
 <hr>
 
+
+
+<img src="Img/GRIDSHADER.png"  style="display: block; margin: 0 auto; width: 50%;">
 
 <div style = "font-size: 21px">
 
@@ -935,6 +1250,9 @@ $$\begin{aligned}
 
 <hr>
 
+float xAxis = smoothstep(_AxisThickness, 0.0, abs(uv.y));
+float yAxis = smoothstep(_AxisThickness, 0.0, abs(uv.x));
+float axisMask = saturate(xAxis + yAxis);
 
 
 <!-- &\text{computers, at the same time, to graph, or plot things on the screen, thats the main goal, and the reason how, }\\ -->
@@ -983,7 +1301,6 @@ $$\begin{aligned}
 \end{aligned}$$
         
 
-</div>
 
 
 <!-- 

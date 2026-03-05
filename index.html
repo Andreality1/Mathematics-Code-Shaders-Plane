@@ -554,6 +554,7 @@ Shader_CircleSDF_2.shader
 
 
 
+
 <!-- 
 _______          _________ _______  _       _________ _        _______  _______ 
 (  ___  )|\     /|\__   __/(  ____ \( \      \__   __/( (    /|(  ____ \(  ____ \
@@ -821,14 +822,15 @@ float yAxis =  smoothstep(AxisThickness, 0.00, abs(coor.x));
 </code></pre>
 
 $$\begin{aligned}
-&\text{the idea behind is that all the points are going to be stablish between the the positive cuadrant of the cartesian plane}\\
-&\text{and once the point are there we are going to define a bound, from 0.00 to AxisThickness, but cuz the bounds are set up}\\
+&\text{the idea behind is that all the points are going to be stablish between the positive cuadrant of the cartesian plane}\\
+&\text{and once the points are there we are going to define a BOUND, from [0.00 to AxisThickness], but cuz the bounds are set up}\\
 &\text{inverted, then the values are going to be 0 for numbers higher than the AxisThickness, and 1 for values under 0.00}\\
 &\text{but cuz there is not going to be a value under 0, cuz every point is positive then we are going to get only values }\\
-&\text{greater than 0.00, between points where their coordinates (x or y) are between 0.00 and AxisThickness}\\
+&\text{greater than 0.00 but lesser than AxisThicness, between points where their coordinates (x or y) are between 0.00 and AxisThickness}\\
 \end{aligned}$$
 
 </div>
+
 
 <div style = "font-size: 21px">
         
@@ -838,17 +840,20 @@ float axisMask = ceil(xAxis + yAxis);
 
 </code></pre>
 
-
 $$\begin{aligned}
-&\text{And cuz the values that we are going to get over 0.00 are going to also be values less than 1 or equal to 1, then if we}\\
-&\text{implement the ceil function then we are going to end up getting, all the values between 0 to 1, are going to be all 1}\\
-&\text{and thats the reason why we get the sharp edges}\\
+&\text{And cuz the values that we are going to get are all over 0, all this values are also going to be values less }\\
+&\text{than 1 or equal to 1, then if we implement the ceil function then we are going to end up getting for all the values }\\
+&\text{between 0 to 1, to all be 1, and thats the reason why we get the sharp edges on the axis lines}\\
 \end{aligned}$$
 
 </div>
 
 <img src="Img/AxisLines.png"  style="display: block; margin: 0 auto; width: 50%;">
 
+
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_AxisLines_SDF.shader">
+Shader_AxisLines_SDF.shader
+</a>
 
 
 <!-- 
@@ -1250,74 +1255,25 @@ $$\begin{aligned}
 
 <hr>
 
-float xAxis = smoothstep(_AxisThickness, 0.0, abs(uv.y));
-float yAxis = smoothstep(_AxisThickness, 0.0, abs(uv.x));
-float axisMask = saturate(xAxis + yAxis);
-
-
-<!-- &\text{computers, at the same time, to graph, or plot things on the screen, thats the main goal, and the reason how, }\\ -->
-
-$$\begin{aligned}
-&\text{So the idea here is to understand that every single computer is run by another computer, that a way for us to }\\
-&\text{understand more computer was create more computers to make use of, so we got to invent a way to name this new }\\
-&\text{computers so everything dont get messup in the process, so instead of detailing computers version 2,3,4,5....}\\
-&\text{ we instead started to name them like shaders, cores, thread, parallelize, kernel, virtualize, and}\\
-&\text{etc, etc, etc...}\\
-&\text{instead imagine the computers using others computers in a different way, with the purpose to achieve a goal.}\\
-&\text{now what we are going to do is define how we can make use of a version of computers names shaders}\\
-&\text{which is the closets way to make use of the graphic structures.}\\
-&\text{The director is the computer that runs the compiler, which is the programming language of your choice,}\\
-&\text{and that allows you to create the layers between the chip and the GPU interface }\\
-&\text{so this is going to be the first way to connect the two points, the CPU is the place where you are going}\\
-&\text{to use this programming language, to use the layers to share information with your graphics card}\\
-&\text{which is the one who would take care of the displaying of your plots, offcourse there is a way to make}\\
-&\text{this in the CPU, but is more manageable to do that in the GPU.}\\
-&\text{So the GPU is the one which can operate this idea of millions of computers in a more clearer way.}\\
-&\text{the main language of your choice is going to be the one who is going to direct which computers}\\
-&\text{at which times, and in which way they are going to behave.}\\
-&\text{imagine as if you were running your program by launching a command run, but instead you are running programs}\\
-&\text{inside a programming language, which create the communication between the next layer of abstraction}\\
-&\\[5ex]
-
-
-&\text{Launching the computers is the key cuz thats whats going to allow you to ordenate things a little bit }\\
-&\text{more clearer, mathematics is the key, make use of mathematics is the main idea here, learn how to }\\
-&\text{make use of the ways to graphics functions things is what we need to do.}\\
-&\text{now what we are going to do is make use of shaders by setting this thing up only to run shaders}\\
-&\text{just one shaders, and we are going to get exhaust to make use of this thing}\\
-&\text{there's million of things that we could write on a shader.}\\
-&\text{So we are going to project many things in shaders, so we could make really nice graph in the future.}\\
-&\\[5ex]
-
-&\text{What we now know about shaders is that they work as computers, but you also know that within a shader there are}\\
-&\text{also hundreds of computers, them which run in parallel, which only mean that current-electricity runs through it}\\
-&\text{making all the computers inside the shader to run at the same time, all the single computers running at the same}\\
-&\text{time, every single computer executed at the same time, and we can make these high number of computers to work }\\
-&\text{how we wanted, and how we can do that is the key point here, we got to understand them before hand; we got to}\\
-&\text{learn how to make use of them so we can make use of them.}\\
-&\text{The question here is how we can make thousands of mini computers inside the shader to work how we want,}\\
-&\text{which means output what we want them to output.}\\
-&\text{}\\
-\end{aligned}$$
-        
-
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_Grid_SDF.shader">
+Shader_Grid_SDF.shader
+</a>
+    
 
 
 <!-- 
-_______           _______  ______   _______  _______  _______ _________          _______  _______  _______          
-(  ____ \|\     /|(  ___  )(  __  \ (  ____ \(  ____ )(  ____ \\__   __/|\     /|(  ____ \(  ___  )(  ____ )|\     /|
-| (    \/| )   ( || (   ) || (  \  )| (    \/| (    )|| (    \/   ) (   | )   ( || (    \/| (   ) || (    )|( \   / )
-| (_____ | (___) || (___) || |   ) || (__    | (____)|| (_____    | |   | (___) || (__    | |   | || (____)| \ (_) / 
-(_____  )|  ___  ||  ___  || |   | ||  __)   |     __)(_____  )   | |   |  ___  ||  __)   | |   | ||     __)  \   /  
-      ) || (   ) || (   ) || |   ) || (      | (\ (         ) |   | |   | (   ) || (      | |   | || (\ (      ) (   
-/\____) || )   ( || )   ( || (__/  )| (____/\| ) \ \__/\____) |   | |   | )   ( || (____/\| (___) || ) \ \__   | |   
-\_______)|/     \||/     \|(______/ (_______/|/   \__/\_______)   )_(   |/     \|(_______/(_______)|/   \__/   \_/                                                                                                                        
+_______  _______           _______  _______  _______    _______  ______   _______ 
+(  ____ \(  ___  )|\     /|(  ___  )(  ____ )(  ____ \  (  ____ \(  __  \ (  ____ \
+| (    \/| (   ) || )   ( || (   ) || (    )|| (    \/  | (    \/| (  \  )| (    \/
+| (_____ | |   | || |   | || (___) || (____)|| (__      | (_____ | |   ) || (__    
+(_____  )| |   | || |   | ||  ___  ||     __)|  __)     (_____  )| |   | ||  __)   
+      ) || | /\| || |   | || (   ) || (\ (   | (              ) || |   ) || (      
+/\____) || (_\ \ || (___) || )   ( || ) \ \__| (____/\  /\____) || (__/  )| )      
+\_______)(____\/_)(_______)|/     \||/   \__/(_______/  \_______)(______/ |/       
 -->
 
-
-
 <hr>
-<h1>Shader Snippet</h1>
+<h1>SQUARE SDF</h1>
 <hr>
 
 <pre><code class="language-hlsl">

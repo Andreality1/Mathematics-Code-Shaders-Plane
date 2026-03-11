@@ -977,7 +977,6 @@ float PI = acos(-1.0);
 
 float2 coor =  coordinateScale PI * 2.0 * 5.0 ;
 
-
 float Coord0 = cos(coor.x);
 float Coord1 = cos(coor.y);
 
@@ -1008,7 +1007,7 @@ $$\begin{aligned}
 &\text{we need to exemplify in this particular field in order to completely validate its functions.}\\
 &\text{lets explain the } arcosine(-1.0) \ \text{function and how its works} \\
 \end{aligned}$$
-
+,
 </div>
 
 
@@ -1310,7 +1309,7 @@ float sdf = min(vectorSpace.x, vectorSpace.y) ;
 
 float shape = smoothstep(0.0, Smoothing, sdf);
 
-float4 col = float(shape, shape, shape, 1.0); 
+float4 col = float4(shape, shape, shape, 1.0); 
                 
 return col;
 
@@ -1356,7 +1355,7 @@ float sdf = min(vectorSpace.x, vectorSpace.y) ;
 
 float shape = smoothstep(0.0, Smoothing, sdf);
 
-float4 col = float(shape, shape, shape, 1.0); 
+float4 col = float4(shape, shape, shape, 1.0); 
                 
 
 </code></pre>
@@ -1510,7 +1509,20 @@ $$\begin{aligned}
 \end{aligned}$$
 
 </div>
-        
+
+<br>
+
+
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_Square0_SDF.shader">
+    Shader_Square0_SDF.shader 
+</a>
+           
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_Square1_SDF.shader">
+    Shader_Square1_SDF.shader 
+</a>
+
+
+
 <!-- 
 _______  _______           _______  _______  _______    _______  _______  _______  _______  _______  _______  _______ 
 (  ____ \(  ___  )|\     /|(  ___  )(  ____ )(  ____ \  (  ____ \(  ___  )(       )(  ____ )(  ___  )(  ____ )(  ____ \
@@ -1551,8 +1563,8 @@ float2 coordinateScale = uv * 2.0 - 1.0;
 
 float4 colorWhite = float4(1,1,1,1); // Color white.
 float4 colorBlack = float4(0,0,0,1); // Color Black.
-float2 size = float2(0.5, 0.5);
 
+float2 size = float2(0.5, 0.5);
 float2 bounds = (abs(coordinateScale));
 
 float4 col = colorBlack; 
@@ -1581,7 +1593,8 @@ $$\begin{aligned}
 <div style = "font-size: 21px">
  
 <pre><code class="language-hlsl">
-       
+
+float2 size = float2(0.5, 0.5);       
 float2 bounds = (abs(coordinateScale));
 
 float4 col = colorBlack; 
@@ -1643,11 +1656,9 @@ $$\begin{aligned}
 </div>
 
 
-
-    
-    
-
-
+<a style="color: blue; font-size: 36px; font-weight: bold;" href="https://github.com/Andreality1/Mathematics-Code-Shaders-Plane/blob/main/Scripts/Shader_SquareCompare_SDF.shader">
+    Shader_SquareCompare_SDF.shader 
+</a>
 
 
 <hr>
